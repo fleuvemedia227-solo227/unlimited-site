@@ -1226,3 +1226,55 @@ button.offer { font: inherit; color: inherit; text-align: left; cursor: pointer;
 .suite .ct-partner { color: var(--ink); }
 .suite #pourquoi .intro h2 { font-size: clamp(42px, 6.4vw, 76px); letter-spacing: -0.035em; line-height: 1.02; }
 .suite #pourquoi .why-card { background: linear-gradient(160deg, #1A7A42, #0C3B22) !important; backdrop-filter: none; }
+
+/* ===== Passe esthétique : un seul fond, une seule échelle de titres, un rythme régulier ===== */
+.suite { background:
+    radial-gradient(760px 520px at 92% 1%, rgba(246,196,83,.20) 0%, transparent 70%),
+    radial-gradient(820px 620px at 4% 14%, rgba(54,209,122,.13) 0%, transparent 70%),
+    radial-gradient(760px 560px at 96% 36%, rgba(246,196,83,.16) 0%, transparent 70%),
+    radial-gradient(820px 620px at 2% 58%, rgba(54,209,122,.14) 0%, transparent 70%),
+    radial-gradient(760px 520px at 94% 82%, rgba(246,196,83,.13) 0%, transparent 70%),
+    linear-gradient(180deg, #F4FAF6 0%, #EAF6EE 45%, #EEF8F1 100%) !important; }
+.suite .bento-sec, .suite #offres, .suite .devis-sec { background: transparent !important; }
+
+/* Même style pour tous les grands titres (celui de « Une seule carte pour tout payer ») */
+.suite .h-slide,
+.suite #offres .intro h2, .suite #pourquoi .intro h2, .suite #faq .intro h2, .suite #contact .intro h2 {
+  font-family: var(--head); font-weight: 800; color: var(--navy) !important;
+  font-size: clamp(34px, 4.6vw, 56px) !important; letter-spacing: -0.03em !important; line-height: 1.05 !important; }
+.suite .intro p { font-size: clamp(16px, 1.6vw, 18px); color: var(--muted); max-width: 56ch; margin-top: 12px; }
+.suite .intro { margin-bottom: 30px; }
+
+/* Rythme régulier entre les sections */
+.suite section.block, .suite #pourquoi { padding: 84px 0 !important; }
+.suite .devis-sec { padding: 0 0 84px !important; }
+.suite #offres { padding-bottom: 48px !important; }
+@media (max-width: 760px) {
+  .suite section.block, .suite #pourquoi { padding: 56px 0 !important; }
+  .suite .devis-sec { padding: 0 0 56px !important; }
+  .suite #offres { padding-bottom: 32px !important; }
+  .suite .intro { margin-bottom: 22px; }
+}
+
+/* Cartes blanches : bord et ombre identiques partout */
+.suite .offer, .suite #faq details, .suite #contact .contact > div, .suite .why-nums div {
+  border: 1px solid rgba(12,59,34,.08) !important; box-shadow: 0 1px 2px rgba(12,59,34,.05), 0 14px 32px -20px rgba(12,59,34,.28) !important; }
+/* Titres sur une seule ligne quand il y a la place */
+.suite .intro, .suite .intro h2 { max-width: none !important; }
+/* Rythme un peu plus serré */
+.suite section.block, .suite #pourquoi { padding: 72px 0 !important; }
+.suite .devis-sec { padding-bottom: 72px !important; }
+@media (max-width: 760px) { .suite section.block, .suite #pourquoi { padding: 52px 0 !important; } .suite .devis-sec { padding-bottom: 52px !important; } }
+/* Le téléphone de la vitrine se fond dans le fond au lieu d'être coupé net */
+.car-solo .stage { -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
+/* Biseau sous l'en-tête : même couleur que le fond qui suit */
+.bhero { background: #F4FAF6; }
+.why-cta { margin-top: 32px; }
+.car-solo .stage { -webkit-mask-image: none; mask-image: none; }
+.car-solo .stage .phone { -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 98%); mask-image: linear-gradient(180deg, #000 70%, transparent 98%); }
+.suite section.block { background: transparent !important; }
+.suite .svc-offres .intro h2, .pg .suite .intro h2 { font-family: var(--head); font-weight: 800; color: var(--navy) !important; font-size: clamp(30px, 4vw, 48px) !important; letter-spacing: -0.03em; line-height: 1.05; }
+.bh-svc { background: #F4FAF6; }
+.bhero, .bhero.bh-svc { background: #F4FAF6 !important; }
+.suite .svc-offres { padding-bottom: 28px !important; }
+.suite .svc-offres + section.block { padding-top: 0 !important; }
