@@ -118,6 +118,14 @@ ${f.get('message') || ''}`;
     ofs.addEventListener('keydown', () => { stop(); ofs.classList.remove('auto'); });
     new IntersectionObserver((e) => (e[0].isIntersecting ? start() : stop()), { threshold: 0.4 }).observe(ofs);
   }
+  // Chiffres qui comptent de 0 à leur valeur
+  const nums = document.querySelectorAll('.why-nums b');
+  if (nums.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; io.unobserve(e.target);
+      const el = e.target, txt = el.textContent, n = parseInt(txt, 10), suf = txt.replace(/^\d+/, ''); if (!n) return;
+      const t0 = performance.now(); const step = (t) => { const k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(n * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: 0.6 });
+    nums.forEach((b) => io.observe(b));
+  }
   // Onglets « Pourquoi nous choisir »
   const wt = [...document.querySelectorAll('.why-tabs [role=tab]')];
   const showWhy = (k) => wt.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); document.getElementById('wp' + i).hidden = i !== k; });
