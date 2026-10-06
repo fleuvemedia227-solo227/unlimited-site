@@ -353,3 +353,66 @@ footer .legal { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.12)
 .soon { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.45); color: #F1E2B8; font-weight: 700; font-size: 15px; }
 .soon::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: glow 2s ease-in-out infinite; }
 .soon-txt { font-weight: 700; color: var(--gold); }
+
+/* ---------------------------------------------------------------- Couleurs par service + icônes réalistes */
+:root {
+  --c-app: #0E6B34; --c-app-soft: #E2F2E7;
+  --c-web: #1F5FA8; --c-web-soft: #E3EEFA;
+  --c-gps: #0F7173; --c-gps-soft: #DDF1F0;
+  --c-ind: #B26B12; --c-ind-soft: #FBEEDC;
+  --sand: #FBF6EA; --sand-line: #EFE3C6;
+}
+section.sand { background: var(--sand); }
+section.sand .offer, section.sand .faq details, section.sand details { border-color: var(--sand-line); }
+
+/* Icônes réalistes : pas de pastille, un peu plus grandes, légère ombre portée */
+.ic.ri-ic { background: none !important; width: 60px !important; height: 60px !important; border-radius: 0 !important; filter: drop-shadow(0 6px 10px rgba(16, 36, 26, .12)); }
+.ic.ri-ic svg { width: 100% !important; height: 100% !important; }
+.offer .ic.ri-ic { width: 56px !important; height: 56px !important; margin-bottom: 14px; }
+.svc .ic.ri-ic { width: 52px !important; height: 52px !important; }
+
+/* Cartes « Nos services » : liseré et liens à la couleur du service */
+.tcard { position: relative; overflow: hidden; }
+.tcard::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--kc, var(--leaf)); }
+.tcard.k-app { --kc: var(--gold); } .tcard.k-web { --kc: var(--c-web); } .tcard.k-gps { --kc: var(--c-gps); } .tcard.k-ind { --kc: var(--c-ind); }
+.tcard.k-web a { color: var(--c-web); } .tcard.k-gps a { color: var(--c-gps); } .tcard.k-ind a { color: var(--c-ind); }
+.tcard.k-web { background: linear-gradient(180deg, var(--c-web-soft) 0, #fff 46%); }
+.tcard.k-gps { background: linear-gradient(180deg, var(--c-gps-soft) 0, #fff 46%); }
+.tcard.k-ind { background: linear-gradient(180deg, var(--c-ind-soft) 0, #fff 46%); }
+.trio3.quad .tcard.k-app .ic.ri-ic { filter: drop-shadow(0 8px 14px rgba(0,0,0,.35)); }
+
+/* Onglets du carrousel : pastille de couleur du service */
+.car-tabs button::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; background: var(--tc); box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+.car-tabs .t-app { --tc: #2FD06A; } .car-tabs .t-web { --tc: #5AA9F0; } .car-tabs .t-gps { --tc: #3FD1C9; } .car-tabs .t-ind { --tc: #FFC24A; }
+
+/* Pages de services : tout prend la couleur de la page */
+.pg { --pc: var(--leaf); --pcs: var(--leaf-soft); }
+.pg.pg-web { --pc: var(--c-web); --pcs: var(--c-web-soft); }
+.pg.pg-gps { --pc: var(--c-gps); --pcs: var(--c-gps-soft); }
+.pg.pg-ind { --pc: var(--c-ind); --pcs: var(--c-ind-soft); }
+.pg .block.alt { background: var(--pcs); }
+.pg .steps li::before { background: var(--pc); color: #fff; }
+.pg .who li { background: var(--pcs); border-color: transparent; color: var(--pc); }
+.pg .offer:hover { border-color: var(--pc); }
+.pg .offer h3 { color: var(--ink); }
+.pg .offer::after { content: ''; display: block; width: 36px; height: 3px; border-radius: 3px; background: var(--pc); margin-top: 16px; opacity: .55; }
+.pg .partner { background: var(--pc); }
+.pg .formule { background: var(--pcs); border-color: transparent; } .pg .formule.gold { background: var(--gold-soft); }
+
+/* Réalisations et technologies : touches de couleur */
+.case-tag { background: var(--c-app-soft); color: var(--c-app); }
+.case:nth-child(2) .case-tag { background: var(--c-gps-soft); color: var(--c-gps); }
+.case:nth-child(3) .case-tag { background: var(--c-web-soft); color: var(--c-web); }
+.stack > div { border-top: 4px solid var(--sc, var(--leaf)); }
+.stack > div:nth-child(1) { --sc: var(--c-web); } .stack > div:nth-child(2) { --sc: #6B4FBB; } .stack > div:nth-child(3) { --sc: var(--gold); } .stack > div:nth-child(4) { --sc: var(--c-app); } .stack > div:nth-child(5) { --sc: var(--c-gps); }
+.stack > div h3 { color: var(--sc); }
+.values div:nth-child(2) { border-left-color: var(--c-web); } .values div:nth-child(3) { border-left-color: var(--c-gps); }
+
+/* Pourquoi nous choisir : cartes blanches sur fond sable */
+#pourquoi .offer { background: #fff; }
+#pourquoi .offer::after { content: ''; display: block; width: 36px; height: 3px; border-radius: 3px; background: var(--gold); margin-top: 16px; }
+
+/* Pied de page : titres dorés */
+footer h4 { color: var(--gold); }
+.tcard .ic.ri-ic { width: 68px !important; height: 68px !important; }
+#pourquoi .offer .ic.ri-ic { width: 60px !important; height: 60px !important; }
