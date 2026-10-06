@@ -1206,3 +1206,23 @@ button.offer { font: inherit; color: inherit; text-align: left; cursor: pointer;
 
 /* Photos des cartes « Créez votre site » et « Suivez vos véhicules » */
 .v-photo.v-fit { object-fit: contain; background: #fff; }
+
+/* Fond de « Une seule carte pour tout payer » prolongé jusqu'au pied de page */
+.suite { background:
+    radial-gradient(900px 600px at 88% 2%, rgba(246,196,83,.22) 0%, transparent 70%),
+    radial-gradient(800px 700px at 6% 40%, rgba(54,209,122,.14) 0%, transparent 70%),
+    radial-gradient(900px 700px at 92% 75%, rgba(246,196,83,.14) 0%, transparent 70%),
+    linear-gradient(180deg, #F3FAF5 0%, #E6F4EA 50%, #EEF8F1 100%); }
+.suite .car-solo, .suite .car-solo .slide.s-app, .suite #apropos, .suite #faq, .suite #contact { background: transparent !important; }
+.suite #apropos .values div { background: rgba(255,255,255,.75); }
+.suite .ct-partner { background: rgba(255,255,255,.7); }
+
+/* Bas de page uniforme : fond clair de « Une seule carte pour tout payer » partout, même pour « Pourquoi nous » */
+.suite #pourquoi { background: transparent !important; clip-path: none; margin: 0; padding: 80px 0 !important; animation: none; color: var(--ink); }
+.suite #pourquoi .intro p { color: var(--muted) !important; }
+/* Grand titre « Pourquoi nous choisir » écrit comme « Une seule carte pour tout payer » */
+.suite #pourquoi .intro h2 { font-size: clamp(38px, 5.6vw, 66px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.06; color: var(--navy) !important; }
+.suite #faq .intro h2, .suite #contact .intro h2 { color: var(--navy); }
+.suite .ct-partner { color: var(--ink); }
+.suite #pourquoi .intro h2 { font-size: clamp(42px, 6.4vw, 76px); letter-spacing: -0.035em; line-height: 1.02; }
+.suite #pourquoi .why-card { background: linear-gradient(160deg, #1A7A42, #0C3B22) !important; backdrop-filter: none; }
