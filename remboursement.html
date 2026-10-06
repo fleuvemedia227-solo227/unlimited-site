@@ -24,10 +24,15 @@
   <a class="hd-mini" href="index.html#contact" data-expert>Devis</a>
   <button type="button" class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
 </div>
-<nav class="mnav" id="mnav" aria-label="Menu" hidden><div class="wrap">
-  <a href="index.html#services">Nos services</a><a href="sites-web.html">Sites web et applications</a><a href="gps.html">Balises GPS et carburant</a><a href="materiel-industriel.html">Matériel industriel</a>
-  <a href="index.html#pourquoi">Pourquoi nous choisir</a><a href="index.html#faq">Questions fréquentes</a>
-  <a class="btn btn-green" href="index.html#contact">Demandez un devis</a>
+<nav class="mnav" id="mnav" aria-label="Menu" hidden><div class="wrap mn-in">
+  <div class="mn-brand"><svg viewBox="0 0 110 110" aria-hidden="true"><rect width="110" height="110" rx="26" fill="#fff"/><g transform="translate(5 5)">
+<path d="M33 18 V62 A27 27 0 0 0 87 62 V44" fill="none" stroke="#1E8A3C" stroke-width="19"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#C9972B" stroke-width="8" stroke-linecap="round"/>
+<path d="M96 16 L77 29 L98 38 Z" fill="#C9972B" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></g></svg><b>UNLIMITED <span>NIGER</span></b><small>Vos solutions digitales et industrielles au Niger</small></div>
+  <div class="mn-links"><a href="index.html">Accueil</a><a href="sites-web.html">Sites web et applications</a><a href="gps.html">Balises GPS et carburant</a><a href="materiel-industriel.html">Matériel industriel</a><a href="index.html#zone">Zone d'intervention</a><a href="index.html#contact">Contact</a></div>
+  <div class="mn-ct"><a href="tel:+22797970709">+227 97 97 07 09</a><a href="tel:+22792970709">+227 92 97 07 09</a><a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a></div>
+  <a class="btn btn-gold mn-go" href="index.html#projet">Demandez un devis gratuit</a>
 </div></nav></header>
 <main>
 <section class="doc"><div class="wrap"><a class="crumb" href="index.html">← Accueil</a><h1>Annulation et remboursement</h1><p class="upd">Dernière mise à jour : 6 octobre 2026</p>
@@ -68,7 +73,7 @@
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const top = document.querySelector('.top');
   const bg = document.getElementById('burger'), mn = document.getElementById('mnav');
-  const setMenu = (o) => { mn.hidden = !o; bg.setAttribute('aria-expanded', String(o)); bg.setAttribute('aria-label', o ? 'Fermer le menu' : 'Ouvrir le menu'); top.classList.toggle('menu-open', o); };
+  const setMenu = (o) => { mn.hidden = !o; bg.setAttribute('aria-expanded', String(o)); bg.setAttribute('aria-label', o ? 'Fermer le menu' : 'Ouvrir le menu'); top.classList.toggle('menu-open', o); document.documentElement.classList.toggle('no-scroll', o); };
   bg.onclick = () => setMenu(mn.hidden);
   // Fenêtre « Parler à un expert » : prépare un e-mail avec la demande
   const dlg = document.getElementById('expert');
@@ -86,6 +91,25 @@ ${f.get('message') || ''}`;
       location.href = 'mailto:unlimited_niger@outlook.be?subject=' + encodeURIComponent('Demande de devis : ' + f.get('service')) + '&body=' + encodeURIComponent(body);
       e.target.querySelector('.ex-note').innerHTML = `<b>Votre messagerie s’est ouverte avec votre demande.</b> Envoyez le message pour qu’il nous parvienne, ou appelez le <a href="tel:+22797970709">+227 97 97 07 09</a>.`; });
   }
+  // Formulaire « Vous avez un projet ? » : prépare un e-mail avec la demande
+  const pjf = document.getElementById('pjf');
+  if (pjf) pjf.addEventListener('submit', (e) => { e.preventDefault(); const f = new FormData(pjf);
+    const body = `Nom : ${f.get('nom')}
+Téléphone : ${f.get('tel')}
+Service : ${f.get('service')}
+Ville ou région : ${f.get('ville')}
+
+${f.get('message') || ''}`;
+    location.href = 'mailto:unlimited_niger@outlook.be?subject=' + encodeURIComponent('Demande de devis : ' + f.get('service')) + '&body=' + encodeURIComponent(body);
+    pjf.querySelector('.pj-note').innerHTML = '<b>Votre messagerie s’est ouverte avec votre demande.</b> Envoyez le message pour qu’il nous parvienne, ou appelez le <a href="tel:+22797970709">+227 97 97 07 09</a>.'; });
+  // Carte du Niger : les vecteurs se dessinent quand la carte apparaît
+  const zmap = document.querySelector('.zone-map');
+  if (zmap) { if ('IntersectionObserver' in window) { const zo = new IntersectionObserver((es) => { if (es[0].isIntersecting) { zmap.classList.add('drawn'); zo.disconnect(); } }, { threshold: 0.35 }); zo.observe(zmap); } else zmap.classList.add('drawn'); }
+  // En-tête : le mot doré change (digitales, GPS et carburant, industrielles)
+  const rot = document.querySelector('.bh-title .rot');
+  if (rot && !still) { const w = rot.dataset.rot.split('|'); rot.innerHTML = w.map((x, i) => `<i${i ? '' : ' class="on"'}>${x}</i>`).join(''); rot.classList.add('go');
+    const it = [...rot.children]; let k = 0;
+    setTimeout(() => setInterval(() => { it[k].className = 'out'; k = (k + 1) % it.length; it[k].className = 'on'; setTimeout(() => it.forEach((x, j) => { if (j !== k) x.className = ''; }), 450); }, 2200), 2400); }
   // Cartes d'offres : un toucher agrandit la carte pour lire le détail
   const zoom = document.getElementById('zoom');
   if (zoom && zoom.showModal) {
