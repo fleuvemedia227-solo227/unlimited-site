@@ -416,3 +416,140 @@ section.sand .offer, section.sand .faq details, section.sand details { border-co
 footer h4 { color: var(--gold); }
 .tcard .ic.ri-ic { width: 68px !important; height: 68px !important; }
 #pourquoi .offer .ic.ri-ic { width: 60px !important; height: 60px !important; }
+
+/* ---------------------------------------------------------------- Téléphone : menu, barre d'appel, mise en page compacte */
+.burger, .mnav, .mbar { display: none; }
+@media (max-width: 1100px) {
+  .burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 0 11px; border: 1px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; }
+  .burger span { display: block; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s ease, opacity .2s ease; }
+  .menu-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-open .burger span:nth-child(2) { opacity: 0; }
+  .menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mnav:not([hidden]) { display: block; border-top: 1px solid var(--line); background: #fff; box-shadow: 0 18px 30px rgba(15,68,36,.12); }
+  .mnav .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; padding: 12px 0 18px; }
+  .mnav a { padding: 11px 0; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 1px solid var(--mist); }
+  .mnav .btn { grid-column: 1 / -1; margin-top: 12px; border-bottom: 0; color: #fff; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+  .top .wrap { min-height: 60px; }
+  .hd-cta { display: none !important; }
+  .brand b { font-size: 15px; white-space: nowrap; } .brand svg { width: 34px; height: 34px; }
+  .mnav .wrap { grid-template-columns: 1fr; }
+  .mbar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(15,68,36,.08); }
+  .mbar a { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 2px solid var(--leaf); color: var(--leaf); }
+  .mbar a.go { flex: 1.4; background: var(--leaf); color: #fff; }
+
+  /* Sections plus serrées */
+  section.block { padding: 52px 0; }
+  h2 { font-size: 27px; }
+  .intro { margin-bottom: 24px; } .intro p { font-size: 16px; margin-top: 10px; }
+
+  /* Carrousel : plus court, onglets remplacés par des points */
+  .slide-in { padding-top: 28px; gap: 0; }
+  .slide h1, .h-slide { font-size: 34px; }
+  .tag { font-size: 12.5px; margin-bottom: 12px; padding: 5px 12px; }
+  .slide .lead { font-size: 16px; margin-top: 14px; }
+  .slide .cta { margin-top: 20px; gap: 10px; }
+  .slide .cta .btn, .soon { min-height: 44px; font-size: 15px; padding: 0 16px; }
+  .slide .stage { height: 330px !important; margin-bottom: 56px; }
+  .slide .phone { width: 170px !important; bottom: -24px; }
+  .slide .card { width: 210px !important; top: 30px !important; }
+  .laptop { width: 260px !important; bottom: 70px !important; }
+  .phone.sm { width: 104px !important; }
+  .photo { width: 250px !important; top: 10px !important; }
+  .slide::before { width: 300px; height: 300px; }
+  .car-nav { bottom: 18px; justify-content: center; }
+  .car-tabs { gap: 10px; justify-content: center; overflow: visible; }
+  .car-tabs button { font-size: 0; width: 12px; height: 12px; min-height: 0; padding: 0; border: 0; background: rgba(255,255,255,.35); }
+  .car-tabs button::before { display: none; }
+  .car-tabs button[aria-selected="true"] { width: 30px; background: var(--gold); }
+  .car-tabs button[aria-selected="true"]::after { height: 100%; background: rgba(255,255,255,.35); }
+  .svc-hero .slide-in { min-height: 0; }
+  .svc-hero .stage { margin-bottom: 20px; }
+
+  /* Nos services : l'application en grand, puis 3 cartes compactes en lignes */
+  .trio3.quad { grid-template-columns: 1fr; gap: 12px; }
+  .tcard { display: grid; grid-template-columns: 56px 1fr; gap: 2px 14px; padding: 18px 16px; border-radius: 18px; align-items: start; }
+  .tcard .ic.ri-ic { grid-row: span 3; width: 56px !important; height: 56px !important; }
+  .tcard h3 { font-size: 17px; } .tcard p { font-size: 14.5px; }
+  .tcard a, .tcard .soon-txt { font-size: 15px; }
+
+  /* Listes de raisons et d'offres : icône à gauche, texte à droite */
+  .offers { gap: 10px; }
+  .offer { display: grid; grid-template-columns: 50px 1fr; gap: 2px 14px; padding: 16px; border-radius: 16px; }
+  .offer .ic.ri-ic { grid-row: span 2; width: 50px !important; height: 50px !important; margin: 0 !important; }
+  .offer h3 { font-size: 16.5px; align-self: end; } .offer p { margin-top: 2px; font-size: 14.5px; grid-column: 2; }
+  .offer::after, #pourquoi .offer::after { display: none !important; }
+  #pourquoi .offer .ic.ri-ic { width: 50px !important; height: 50px !important; }
+
+  /* Qui sommes-nous */
+  .about .big { font-size: 17px; }
+  .values div { padding: 16px 18px; }
+
+  /* Réalisations : on fait glisser du doigt */
+  .cases { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: -16px; padding: 4px 16px 12px; scrollbar-width: none; }
+  .cases::-webkit-scrollbar { display: none; }
+  .case { flex: 0 0 82%; scroll-snap-align: start; grid-template-columns: 1fr; padding: 16px; }
+  .case-img { max-height: 170px; } .case-img img { width: 55%; }
+  .case ul { display: none; } .case p { font-size: 14.5px; }
+  .case-next { flex-basis: 70%; }
+  #realisations .intro p::after { content: ' Faites glisser pour voir la suite.'; }
+
+  /* Technologies : étiquettes à la suite */
+  .stack { grid-template-columns: 1fr; gap: 10px; }
+  .stack > div { padding: 16px; }
+  .stack ul { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .stack li { font-size: 13.5px; padding: 5px 10px; }
+
+  /* FAQ, partenaires, contact */
+  .faq summary { padding: 15px 0; font-size: 15.5px; }
+  .partner { padding: 26px 20px; border-radius: 22px; }
+  .contact { gap: 10px; }
+  .contact div { padding: 16px 18px; }
+  .contact p { font-size: 16px; }
+
+  /* Étapes : frise verticale compacte */
+  .steps { gap: 10px; }
+  .steps li { display: grid; grid-template-columns: 40px 1fr; gap: 2px 14px; padding: 16px; }
+  .steps li::before { grid-row: span 2; width: 40px; height: 40px; font-size: 17px; margin: 0; }
+  .steps p { margin-top: 2px; font-size: 14.5px; }
+  .who li { padding: 8px 14px; font-size: 14px; }
+
+  /* Pied de page plus court */
+  footer { padding: 36px 0 24px; }
+  footer .wrap { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+  footer .wrap > div:first-child { grid-column: 1 / -1; }
+  footer ul { gap: 6px; font-size: 14px; }
+}
+@media (max-width: 640px) {
+  /* Pourquoi : 2 lignes de texte maximum */
+  #pourquoi .offer p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  /* Technologies : on fait glisser les colonnes */
+  .stack { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: -16px; padding: 4px 16px 12px; scrollbar-width: none; }
+  .stack::-webkit-scrollbar { display: none; }
+  .stack > div { flex: 0 0 74%; scroll-snap-align: start; }
+  #technologies .intro p::after { content: ' Faites glisser pour tout voir.'; }
+  /* Qui sommes-nous : plus court */
+  .about > div:first-child > p:nth-of-type(3) { display: none; }
+  .values { grid-template-columns: 1fr; gap: 10px; }
+  /* Pied de page : le menu ☰ remplace la longue liste de liens */
+  footer .wrap > div:nth-child(2) { display: none; }
+  footer .wrap { grid-template-columns: 1fr; }
+  /* Contact : numéros et e-mail sur une ligne chacun */
+  .contact p { overflow-wrap: anywhere; }
+}
+@media (max-width: 640px) {
+  .top { background: var(--forest); border-bottom: 1px solid rgba(255,255,255,.08); backdrop-filter: none; }
+  .top.scrolled { box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .top .brand { gap: 10px; }
+  .top .brand svg { width: 38px; height: 38px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .top .brand b { display: flex; flex-direction: column; color: #fff; font-size: 17px; line-height: 1; letter-spacing: .04em; }
+  .top .brand b span { color: var(--gold); font-size: 11px; letter-spacing: .42em; margin-top: 4px; }
+  .burger { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+  .burger span { background: #fff; }
+  .menu-open .burger { background: rgba(255,255,255,.16); }
+  .mnav:not([hidden]) { border-top: 0; }
+  .top .wrap { min-height: 64px; }
+  html { scroll-padding-top: 70px; }
+}
