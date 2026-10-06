@@ -553,3 +553,97 @@ footer h4 { color: var(--gold); }
   .top .wrap { min-height: 64px; }
   html { scroll-padding-top: 70px; }
 }
+
+/* ---------------------------------------------------------------- Inspiration « site d'entreprise » : chiffres, cartes image, onglets, fenêtre expert */
+.hd-mini { display: none; }
+/* Bande de chiffres clés */
+.stats { background: #fff; border-bottom: 1px solid var(--line); }
+.stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stats .wrap > div { padding: 30px 20px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid var(--line); }
+.stats .wrap > div:first-child { border-left: 0; padding-left: 0; }
+.stats b { font: 800 clamp(34px, 4vw, 46px)/1 var(--head); color: var(--leaf); letter-spacing: -0.02em; }
+.stats .wrap > div:nth-child(2) b { color: var(--gold); } .stats .wrap > div:nth-child(3) b { color: var(--c-web); } .stats .wrap > div:nth-child(4) b { color: var(--c-gps); }
+.stats span { color: var(--muted); font-size: 15px; line-height: 1.35; }
+
+/* Cartes de services avec image */
+.pcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.pcard { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid var(--line); color: var(--ink); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(15,68,36,.16); }
+.pc-img { display: flex; align-items: center; justify-content: center; height: 170px; overflow: hidden; background: var(--kc2, var(--forest)); }
+.pc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.pc-img.top img { object-position: top; width: 70%; border-radius: 12px 12px 0 0; margin-top: 18px; height: calc(100% - 18px); }
+.pcard.k-app .pc-img { background: radial-gradient(120% 120% at 80% 0%, #1A6A37, var(--forest-2)); padding: 18px; } .pcard.k-app .pc-img img { object-fit: contain; filter: drop-shadow(0 12px 20px rgba(0,0,0,.4)); transform: rotate(-6deg); }
+.pcard.k-gps .pc-img { background: linear-gradient(160deg, #17706F, #083334); } .pcard.k-web .pc-img { background: #133A66; }
+.pcard:hover .pc-img img { transform: scale(1.05); } .pcard.k-app:hover .pc-img img { transform: rotate(-3deg) scale(1.05); }
+.pc-txt { display: flex; flex-direction: column; gap: 8px; padding: 20px 20px 22px; flex: 1; }
+.pc-txt b { font: 700 18px/1.2 var(--head); }
+.pc-txt > span:not(.pc-tag) { color: var(--muted); font-size: 15px; flex: 1; }
+.pc-txt em { font-style: normal; font-weight: 700; color: var(--kc, var(--leaf)); }
+.pc-txt em i { font-style: normal; display: inline-block; transition: transform .2s ease; } .pcard:hover em i { transform: translateX(4px); }
+.pc-tag { align-self: flex-start; font-size: 12.5px; font-weight: 700; color: #6B4A00; background: var(--gold-soft); border-radius: 999px; padding: 3px 10px; }
+.pcard.k-app { --kc: #8A6414; border-top: 4px solid var(--gold); } .pcard.k-web { --kc: var(--c-web); border-top: 4px solid var(--c-web); } .pcard.k-gps { --kc: var(--c-gps); border-top: 4px solid var(--c-gps); } .pcard.k-ind { --kc: var(--c-ind); border-top: 4px solid var(--c-ind); }
+.pcard.k-ind .pc-img { background: #2E2A23; }
+
+/* Onglets « Pourquoi nous choisir » */
+.why { display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; }
+.why-tabs { display: flex; flex-direction: column; gap: 8px; }
+.why-tabs button { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 16px; border: 1px solid var(--sand-line); background: #fff; font: 700 16px/1.2 var(--body); color: var(--ink); text-align: left; cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }
+.why-tabs button .ic.ri-ic { width: 40px !important; height: 40px !important; filter: none; flex: none; }
+.why-tabs button:hover { border-color: #E2CF9E; }
+.why-tabs button[aria-selected="true"] { border-color: var(--gold); box-shadow: 0 10px 24px rgba(160,120,30,.16); background: linear-gradient(90deg, #FFF8E6, #fff); }
+.why-panel { background: #fff; border-radius: 24px; padding: 40px; border: 1px solid var(--sand-line); min-height: 100%; animation: rise .5s cubic-bezier(.2,.7,.2,1); }
+.why-panel .ic.ri-ic { width: 96px !important; height: 96px !important; }
+.why-panel h3 { font-size: clamp(24px, 3vw, 32px); margin-top: 18px; }
+.why-panel p { margin-top: 14px; color: var(--muted); font-size: 18px; max-width: 52ch; }
+.why-panel .btn { margin-top: 26px; }
+.js .why-panel[hidden] { display: none !important; }
+
+/* Fenêtre « Parler à un expert » */
+.expert { border: 0; border-radius: 24px; padding: 0; width: min(520px, calc(100% - 24px)); max-height: calc(100% - 24px); box-shadow: 0 30px 80px rgba(0,0,0,.35); color: var(--ink); }
+.expert::backdrop { background: rgba(8, 30, 18, .55); backdrop-filter: blur(3px); }
+.ex-in { display: grid; gap: 12px; padding: 26px; }
+.ex-head { display: flex; align-items: center; justify-content: space-between; }
+.ex-head h2 { font-size: 24px; }
+.ex-x { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.ex-sub { color: var(--muted); font-size: 15px; margin-top: -4px; }
+.ex-in label { display: grid; gap: 6px; font-weight: 700; font-size: 14px; }
+.ex-in input, .ex-in select, .ex-in textarea { font: 16px/1.4 var(--body); padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: #FAFCFB; color: var(--ink); width: 100%; }
+.ex-in input:focus, .ex-in select:focus, .ex-in textarea:focus { outline: none; border-color: var(--leaf); box-shadow: 0 0 0 3px var(--leaf-soft); }
+.ex-go { width: 100%; margin-top: 4px; }
+.ex-note { font-size: 13.5px; color: var(--muted); }
+.expert[open] { animation: rise .35s cubic-bezier(.2,.7,.2,1); }
+
+/* Fil d'Ariane */
+.crumbs { font-size: 14px; color: rgba(255,255,255,.75); margin-bottom: 14px; }
+.crumbs a { color: #fff; text-decoration: none; } .crumbs a:hover { text-decoration: underline; }
+
+@media (max-width: 1000px) { .pcards { grid-template-columns: 1fr 1fr; } .stats .wrap { grid-template-columns: 1fr 1fr; } .stats .wrap > div:nth-child(3) { border-left: 0; padding-left: 0; } .stats .wrap > div { border-top: 1px solid var(--line); } .stats .wrap > div:nth-child(-n+2) { border-top: 0; } .why { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  /* En-tête blanc et net, comme un site d'entreprise : logo, bouton « Devis », menu */
+  .top { background: rgba(255,255,255,.97) !important; border-bottom: 1px solid var(--line) !important; }
+  .top.scrolled { box-shadow: 0 6px 20px rgba(15,68,36,.10) !important; }
+  .top .brand b { color: var(--leaf) !important; }
+  .top .brand svg { box-shadow: none !important; }
+  .burger { background: #fff !important; border-color: var(--line) !important; }
+  .burger span { background: var(--ink) !important; }
+  .hd-mini { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--leaf); color: #fff; font-weight: 700; font-size: 14.5px; text-decoration: none; margin-left: auto; }
+  .top .brand { margin-right: 0; }
+  .top .wrap { gap: 10px; }
+  .stats .wrap > div { padding: 18px 12px 18px 0; } .stats .wrap > div:nth-child(even) { padding-left: 14px; }
+  .stats b { font-size: 32px; } .stats span { font-size: 13.5px; }
+  .pcards { grid-template-columns: 1fr; gap: 12px; }
+  .pcard { flex-direction: row; } .pc-img { width: 118px; height: auto; flex: none; } .pc-img.top img { width: 80%; margin-top: 12px; }
+  .pcard.k-app .pc-img { padding: 10px; }
+  .pc-txt { padding: 14px 14px 16px; gap: 5px; } .pc-txt b { font-size: 16.5px; } .pc-txt > span:not(.pc-tag) { font-size: 14px; }
+  .why-tabs { flex-direction: row; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding: 2px 16px 6px; }
+  .why-tabs::-webkit-scrollbar { display: none; }
+  .why-tabs button { flex: none; padding: 8px 14px 8px 10px; font-size: 14.5px; gap: 8px; }
+  .why-tabs button .ic.ri-ic { width: 30px !important; height: 30px !important; }
+  .why-panel { padding: 24px 20px; border-radius: 20px; }
+  .why-panel .ic.ri-ic { width: 64px !important; height: 64px !important; }
+  .why-panel h3 { font-size: 22px; margin-top: 12px; } .why-panel p { font-size: 16px; }
+  .ex-in { padding: 20px; }
+}
+.ic.ri-ic { display: inline-flex; flex: none; }
+.why-panel .ic.ri-ic { display: block; }
+@media (max-width: 640px) { .pcard.k-web .pc-img img { object-position: left top; } }
