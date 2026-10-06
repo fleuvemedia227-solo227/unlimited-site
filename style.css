@@ -1177,3 +1177,20 @@ button.offer { font: inherit; color: inherit; text-align: left; cursor: pointer;
   .why-card h3 { margin-top: 0; font-size: 17px; }
   .why-card p { font-size: 14.5px; margin-top: 6px; }
 }
+
+/* Pourquoi nous sur téléphone : une carte par ligne */
+@media (max-width: 760px) {
+  .why-row { grid-template-columns: 1fr; gap: 12px; }
+  .why-card { padding: 20px 18px 22px; }
+  .why-card h3 { font-size: 18px; }
+  .why-card p { font-size: 14.5px; }
+}
+
+/* Vitrine de l'application : fond doux vert et or, badge « Bientôt disponible » aligné */
+.car-solo, .car-solo .slide.s-app { background:
+    radial-gradient(40% 60% at 85% 20%, rgba(246,196,83,.22) 0%, transparent 65%),
+    radial-gradient(45% 60% at 10% 90%, rgba(54,209,122,.18) 0%, transparent 65%),
+    linear-gradient(180deg, #F3FAF5, #E6F4EA) !important; }
+.car-solo .slide::before { display: none !important; }
+.car-solo .cta { margin-left: 0 !important; }
+.car-solo .soon { min-height: 38px; padding: 0 16px; margin: 0; background: #FFF6DE; border: 1px solid #EBD39A; color: #6B4E0E; font-size: 14.5px; }
