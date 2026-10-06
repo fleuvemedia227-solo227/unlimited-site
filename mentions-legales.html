@@ -26,7 +26,7 @@
 </div>
 <nav class="mnav" id="mnav" aria-label="Menu" hidden><div class="wrap">
   <a href="index.html#services">Nos services</a><a href="sites-web.html">Sites web et applications</a><a href="gps.html">Balises GPS et carburant</a><a href="materiel-industriel.html">Matériel industriel</a>
-  <a href="index.html#pourquoi">Pourquoi nous choisir</a><a href="index.html#apropos">Qui sommes-nous</a><a href="index.html#realisations">Nos réalisations</a><a href="index.html#faq">Questions fréquentes</a>
+  <a href="index.html#pourquoi">Pourquoi nous choisir</a><a href="index.html#apropos">Qui sommes-nous</a><a href="index.html#faq">Questions fréquentes</a>
   <a class="btn btn-green" href="index.html#contact">Demandez un devis</a>
 </div></nav></header>
 <main>
@@ -51,6 +51,7 @@
 </div></section>
 </main>
 <div class="mbar" aria-label="Contact rapide"><a href="tel:+22797970709"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a><a class="go" href="index.html#contact" data-expert>Parler à un expert</a></div>
+<dialog class="zoom" id="zoom" aria-label="Détail"><div class="zm-in"><button type="button" class="zm-x" aria-label="Fermer">×</button><div class="zm-body"></div></div></dialog>
 <dialog class="expert" id="expert" aria-labelledby="ex-t">
   <form method="dialog" class="ex-in" id="exf">
     <div class="ex-head"><h2 id="ex-t">Parler à un expert</h2><button type="button" class="ex-x" id="exx" aria-label="Fermer">×</button></div>
@@ -87,6 +88,32 @@ ${f.get('message') || ''}`;
       location.href = 'mailto:unlimited_niger@outlook.be?subject=' + encodeURIComponent('Demande de devis : ' + f.get('service')) + '&body=' + encodeURIComponent(body);
       e.target.querySelector('.ex-note').innerHTML = `<b>Votre messagerie s’est ouverte avec votre demande.</b> Envoyez le message pour qu’il nous parvienne, ou appelez le <a href="tel:+22797970709">+227 97 97 07 09</a>.`; });
   }
+  // Cartes d'offres : un toucher agrandit la carte pour lire le détail
+  const zoom = document.getElementById('zoom');
+  if (zoom && zoom.showModal) {
+    document.querySelectorAll('.zoomable .offer').forEach((c) => c.addEventListener('click', () => {
+      const box = c.closest('.zoomable'); const more = box.dataset.more;
+      zoom.querySelector('.zm-body').innerHTML = c.innerHTML + (more ? `<a class="btn btn-green zm-more" href="${more}">En savoir plus</a>` : '');
+      zoom.className = 'zoom ' + ([...(c.closest('.pg') || box).classList].find((x) => x.startsWith('pg-')) || ''); zoom.showModal(); }));
+    zoom.querySelector('.zm-x').onclick = () => zoom.close();
+    zoom.addEventListener('click', (e) => { if (e.target === zoom) zoom.close(); });
+  }
+  // « Ce que nous proposons » : onglets qui changent tout seuls toutes les 5 s
+  const ofs = document.getElementById('offres'); const ot = [...document.querySelectorAll('.of-t')];
+  const showOf = (t) => { ot.forEach((x) => x.setAttribute('aria-selected', String(x === t)));
+    document.querySelectorAll('.of-p').forEach((p) => { p.hidden = p.dataset.op !== t.dataset.of; });
+    const bar = t.parentElement; bar.scrollTo({ left: t.offsetLeft - 16, behavior: 'smooth' }); };
+  ot.forEach((t) => (t.onclick = () => showOf(t)));
+  if (ofs && ot.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let timer = null, k = 0;
+    const tick = () => { k = (k + 1) % ot.length; showOf(ot[k]); };
+    const start = () => { if (timer || !ofs.classList.contains('auto')) return; ofs.classList.add('run'); timer = setInterval(tick, 5000); };
+    const stop = () => { clearInterval(timer); timer = null; ofs.classList.remove('run'); };
+    ofs.classList.add('auto');
+    ofs.addEventListener('pointerdown', () => { stop(); ofs.classList.remove('auto'); });
+    ofs.addEventListener('keydown', () => { stop(); ofs.classList.remove('auto'); });
+    new IntersectionObserver((e) => (e[0].isIntersecting ? start() : stop()), { threshold: 0.4 }).observe(ofs);
+  }
   // Onglets « Pourquoi nous choisir »
   const wt = [...document.querySelectorAll('.why-tabs [role=tab]')];
   const showWhy = (k) => wt.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); document.getElementById('wp' + i).hidden = i !== k; });
@@ -108,7 +135,7 @@ ${f.get('message') || ''}`;
 <path d="M96 16 L77 29 L98 38 Z" fill="#C9972B" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></g></svg><b>UNLIMITED <span>NIGER</span></b></a>
     <p style="margin-top:14px;max-width:36ch">L'innovation au service de votre réussite. Solutions digitales et industrielles au Niger.</p>
     <p style="margin-top:10px"><a href="tel:+22797970709">+227 97 97 07 09</a><br><a href="tel:+22792970709">+227 92 97 07 09</a><br><a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a></p></div>
-  <div><h4>Unlimited Niger</h4><ul><li><a href="index.html#services">Nos services</a></li><li><a href="index.html#apropos">Qui sommes-nous</a></li><li><a href="index.html#pourquoi">Pourquoi nous choisir</a></li><li><a href="index.html#realisations">Nos réalisations</a></li><li><a href="index.html#technologies">Nos technologies</a></li><li><a href="index.html#faq">Questions fréquentes</a></li><li><a href="index.html#application">L'application Unlimited</a></li><li><a href="sites-web.html">Sites web et applications</a></li><li><a href="gps.html">Balises GPS et carburant</a></li><li><a href="materiel-industriel.html">Matériel industriel</a></li><li><a href="index.html#partenaires">Devenir partenaire</a></li></ul></div>
+  <div><h4>Unlimited Niger</h4><ul><li><a href="index.html#services">Nos services</a></li><li><a href="index.html#apropos">Qui sommes-nous</a></li><li><a href="index.html#pourquoi">Pourquoi nous choisir</a></li><li></li><li><a href="index.html#technologies">Nos technologies</a></li><li><a href="index.html#faq">Questions fréquentes</a></li><li><a href="index.html#application">L'application Unlimited</a></li><li><a href="sites-web.html">Sites web et applications</a></li><li><a href="gps.html">Balises GPS et carburant</a></li><li><a href="materiel-industriel.html">Matériel industriel</a></li><li><a href="index.html#partenaires">Devenir partenaire</a></li></ul></div>
   <div><h4>Informations légales</h4><ul><li><a href="conditions.html">Conditions générales</a></li><li><a href="remboursement.html">Annulation et remboursement</a></li><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
   <p class="legal">© 2026 Unlimited Niger · Tous vos achats se paient avec la carte Unlimited. Prix en francs CFA (FCFA).</p>
 </div></footer>
