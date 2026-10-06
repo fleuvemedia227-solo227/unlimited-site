@@ -1194,3 +1194,15 @@ button.offer { font: inherit; color: inherit; text-align: left; cursor: pointer;
 .car-solo .slide::before { display: none !important; }
 .car-solo .cta { margin-left: 0 !important; }
 .car-solo .soon { min-height: 38px; padding: 0 16px; margin: 0; background: #FFF6DE; border: 1px solid #EBD39A; color: #6B4E0E; font-size: 14.5px; }
+
+/* Petits téléphones (320 px) : rien ne dépasse de l'écran */
+.doc table { width: 100%; table-layout: fixed; }
+.doc td, .doc th, .contact p, .partner p { overflow-wrap: anywhere; }
+@media (max-width: 380px) {
+  .partner { padding: 28px 20px !important; }
+  .partner .cta { gap: 10px !important; margin-top: 18px !important; }
+  .partner .cta .btn { width: 100%; justify-content: center; }
+}
+
+/* Photos des cartes « Créez votre site » et « Suivez vos véhicules » */
+.v-photo.v-fit { object-fit: contain; background: #fff; }
