@@ -1101,3 +1101,11 @@ button.offer { font: inherit; color: inherit; text-align: left; cursor: pointer;
 #offres .of-tabs .of-t { min-height: 32px; padding: 0 12px; font-size: 13px; font-weight: 600; }
 @media (max-width: 760px) { #offres .of-tabs .of-t { min-height: 30px; padding: 0 11px; font-size: 12px; } }
 #offres.run .of-t[aria-selected="true"]::after { height: 2px; }
+
+/* Pages de services réduites : même en-tête vert et or que l'accueil, sans image */
+.bh-svc .bh-in { padding: 44px 0 110px; }
+.bh-svc .crumbs { color: rgba(255,255,255,.8); font-size: 13.5px; }
+.bh-svc .crumbs a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.bh-svc .bh-title { margin-top: 18px; max-width: 24ch; animation-delay: .1s; }
+.bh-svc .bh-lead { animation-delay: .3s; }
+@media (max-width: 760px) { .bh-svc .bh-in { padding: 30px 0 84px; } .bh-svc .bh-title { font-size: 28px; } .bh-svc .bh-lead { font-size: 15.5px; } }
