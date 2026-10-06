@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annulation et remboursement | Unlimited Niger</title>
+<meta name="description" content="Annulation et remboursement du service Unlimited Niger.">
+<meta property="og:title" content="Annulation et remboursement | Unlimited Niger"><meta property="og:description" content="Annulation et remboursement du service Unlimited Niger."><meta property="og:image" content="img/carte.png">
+<link rel="icon" href="img/UnlimitedNiger-icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Unlimited Niger, accueil"><svg viewBox="0 0 110 110" aria-hidden="true"><rect width="110" height="110" rx="26" fill="#fff"/><g transform="translate(5 5)">
+<path d="M33 18 V62 A27 27 0 0 0 87 62 V44" fill="none" stroke="#1E8A3C" stroke-width="19"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#C9972B" stroke-width="8" stroke-linecap="round"/>
+<path d="M96 16 L77 29 L98 38 Z" fill="#C9972B" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></g></svg><b>UNLIMITED <span>NIGER</span></b></a>
+  <nav aria-label="Services"><a href="index.html">Accueil</a><a href="sites-web.html">Sites web</a><a href="gps.html">GPS</a><a href="materiel-industriel.html">Matériel industriel</a><a href="index.html#contact">Contact</a></nav>
+  <a class="btn btn-green" href="index.html#contact">Demandez un devis</a>
+</div></header>
+<main>
+<section class="doc"><div class="wrap"><a class="crumb" href="index.html">← Accueil</a><h1>Annulation et remboursement</h1><p class="upd">Dernière mise à jour : 6 octobre 2026</p>
+<p>Cette page explique ce qui se passe quand un paiement échoue, quand une commande est annulée et comment se fait un remboursement.</p>
+<h2>1. Recharge de la carte</h2>
+<ul><li><b>Recharge échouée ou refusée</b> : votre compte n'est pas débité, ou le montant vous est restitué selon les délais du moyen de recharge utilisé.</li>
+<li><b>Montant débité mais carte non créditée</b> : contactez-nous avec la référence de la transaction. Après vérification, votre carte est créditée ou le montant vous est remboursé sur le moyen de recharge utilisé, sous 7 jours ouvrés.</li></ul>
+<h2>2. Commandes payées avec la carte</h2>
+<ul><li><b>Commande annulée par le partenaire</b> (produit indisponible, départ supprimé…) : le montant revient <b>immédiatement</b> sur votre carte Unlimited.</li>
+<li><b>Annulation à la demande du client</b> : possible tant que le partenaire n'a pas commencé à traiter la commande (billet non utilisé, ordonnance non préparée, marchandise non remise). Les conditions propres à chaque partenaire, par exemple pour un billet de car, sont affichées avant le paiement.</li>
+<li><b>Service non rendu</b> : si le service payé n'a pas été fourni, signalez-le dans les 7 jours. Après vérification, le montant est remboursé sur votre carte.</li></ul>
+<h2>3. Bons d'essence</h2>
+<ul><li>Si un bon n'est utilisé qu'en partie, le reste est crédité sur la carte de la personne qui l'a utilisé.</li>
+<li>Un bon non utilisé à sa date d'expiration est remboursé automatiquement sur la carte de l'acheteur.</li></ul>
+<h2>4. Solde de la carte</h2>
+<p>Le solde de la carte n'est pas remboursable en espèces. En cas de fermeture du compte, le client peut demander le remboursement de son solde restant en nous contactant ; il lui est versé sur un compte à son nom, après vérification de son identité, sous 7 jours ouvrés.</p>
+<h2>5. Nous contacter</h2>
+<p>Téléphone : <a href="tel:+22797970709">+227 97 97 07 09</a> / <a href="tel:+22792970709">+227 92 97 07 09</a> · E-mail : <a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a>. Indiquez votre numéro de téléphone et la référence du paiement (visible dans « Activité »).</p>
+</div></section>
+</main>
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const top = document.querySelector('.top');
+  const onScroll = () => top.classList.toggle('scrolled', scrollY > 8); onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  const sel = '.intro, .tcard, .offer, .case, .stack > div, .values > div, .steps li, .faq details, .partner, .contact > div, .about > div:first-child, .who li, .formule, .doc h2';
+  const els = [...document.querySelectorAll(sel)];
+  els.forEach((el) => { const sib = [...el.parentElement.children].filter((x) => x.matches(sel)); el.style.setProperty('--d', Math.min(sib.indexOf(el), 6) * 80 + 'ms'); el.classList.add('rv'); });
+  if (still || !('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('in')); return; }
+  const io = new IntersectionObserver((list) => list.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach((el) => io.observe(el));
+})();
+</script>
+<footer><div class="wrap">
+  <div><a class="brand" href="index.html"><svg viewBox="0 0 110 110" aria-hidden="true"><rect width="110" height="110" rx="26" fill="#fff"/><g transform="translate(5 5)">
+<path d="M33 18 V62 A27 27 0 0 0 87 62 V44" fill="none" stroke="#1E8A3C" stroke-width="19"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round"/>
+<path d="M18 96 C46 92 70 72 88 34" fill="none" stroke="#C9972B" stroke-width="8" stroke-linecap="round"/>
+<path d="M96 16 L77 29 L98 38 Z" fill="#C9972B" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></g></svg><b>UNLIMITED <span>NIGER</span></b></a>
+    <p style="margin-top:14px;max-width:36ch">L'innovation au service de votre réussite. Solutions digitales et industrielles au Niger.</p>
+    <p style="margin-top:10px"><a href="tel:+22797970709">+227 97 97 07 09</a><br><a href="tel:+22792970709">+227 92 97 07 09</a><br><a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a></p></div>
+  <div><h4>Unlimited Niger</h4><ul><li><a href="index.html#services">Nos services</a></li><li><a href="index.html#apropos">Qui sommes-nous</a></li><li><a href="index.html#pourquoi">Pourquoi nous choisir</a></li><li><a href="index.html#realisations">Nos réalisations</a></li><li><a href="index.html#technologies">Nos technologies</a></li><li><a href="index.html#faq">Questions fréquentes</a></li><li><a href="index.html#application">L'application Unlimited</a></li><li><a href="sites-web.html">Sites web et applications</a></li><li><a href="gps.html">Balises GPS et carburant</a></li><li><a href="materiel-industriel.html">Matériel industriel</a></li><li><a href="index.html#partenaires">Devenir partenaire</a></li></ul></div>
+  <div><h4>Informations légales</h4><ul><li><a href="conditions.html">Conditions générales</a></li><li><a href="remboursement.html">Annulation et remboursement</a></li><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+  <p class="legal">© 2026 Unlimited Niger · Tous vos achats se paient avec la carte Unlimited. Prix en francs CFA (FCFA).</p>
+</div></footer>
+</body>
+</html>
