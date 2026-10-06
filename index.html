@@ -67,88 +67,29 @@
     <article class="case case-next"><div class="case-txt"><h3>Votre projet ici</h3><p>Site web, application, flotte GPS ou équipement industriel : parlez-nous de votre projet.</p><a class="btn btn-gold" href="#contact" data-expert>Demandez un devis</a></div></article>
   </div>
 </div></section>
-<section class="car" aria-roledescription="carrousel" aria-label="Nos services">
-  <div class="car-track" id="track">
-    <article class="slide s-app" id="application" aria-roledescription="diapositive" aria-label="1 sur 4">
+<section class="car car-solo" aria-label="L'application Unlimited Niger">
+  <div class="car-track">
+    <article class="slide s-app active" id="application">
       <div class="wrap slide-in">
         <div class="slide-txt">
           <p class="tag">L'application Unlimited Niger</p>
           <h2 class="h-slide">Une seule carte pour <em>tout payer</em>.</h2>
           <p class="lead">Utilisez uniquement la carte Unlimited pour faire tous vos achats dans l'application. Lancement en cours au Niger.</p>
-          <div class="cta"><a class="btn btn-gold" href="#contact">Être informé du lancement</a><span class="soon">Bientôt disponible</span></div>
+          <div class="cta"><span class="soon">Bientôt disponible</span></div>
         </div>
         <div class="stage" aria-hidden="true"><div class="phone"><img src="ecran-accueil.jpg" alt="" width="390" height="844"></div><img class="card" src="carte.png" alt="" width="760" height="480"></div>
       </div>
     </article>
-    <article class="slide s-web" aria-roledescription="diapositive" aria-label="2 sur 4">
-      <div class="wrap slide-in">
-        <div class="slide-txt">
-          <p class="tag">Sites web et applications</p>
-          <h2 class="h-slide">Votre site et votre application, <em>sur mesure</em>.</h2>
-          <p class="lead">Nous concevons des sites web performants et des applications mobiles pour renforcer votre présence digitale et améliorer votre productivité.</p>
-          <div class="cta"><a class="btn btn-gold" href="sites-web.html">En savoir plus</a><a class="btn btn-line" href="#contact">Demandez un devis</a></div>
-        </div>
-        <div class="stage" aria-hidden="true"><div class="laptop"><img src="site-apercu.jpg" alt="" width="1366" height="768"></div><div class="phone sm"><img src="ecran-accueil.jpg" alt="" width="390" height="844"></div></div>
-      </div>
-    </article>
-    <article class="slide s-gps" aria-roledescription="diapositive" aria-label="3 sur 4">
-      <div class="wrap slide-in">
-        <div class="slide-txt">
-          <p class="tag">Balises GPS et gestion carburant</p>
-          <h2 class="h-slide">Suivez vos véhicules et <em>votre carburant</em>.</h2>
-          <p class="lead">Installation de balises GPS et suivi du carburant en temps réel, avec alerte en cas de baisse anormale. Optimisez vos déplacements, sécurisez vos biens et réduisez vos coûts.</p>
-          <div class="cta"><a class="btn btn-gold" href="gps.html">En savoir plus</a><a class="btn btn-line" href="#contact">Demandez un devis</a></div>
-        </div>
-        <div class="stage" aria-hidden="true"><div class="phone"><img src="ecran-gps.jpg" alt="" width="390" height="844"></div></div>
-      </div>
-    </article>
-    <article class="slide s-ind" aria-roledescription="diapositive" aria-label="4 sur 4">
-      <div class="wrap slide-in">
-        <div class="slide-txt">
-          <p class="tag">Location, vente et industrie</p>
-          <h2 class="h-slide">Du matériel industriel <em>pour vos projets</em>.</h2>
-          <p class="lead">Location et vente de matériels industriels et solutions adaptées à vos chantiers et à vos activités, pour plus d'efficacité et de performance.</p>
-          <div class="cta"><a class="btn btn-gold" href="materiel-industriel.html">En savoir plus</a><a class="btn btn-line" href="#contact">Demandez un devis</a></div>
-        </div>
-        <div class="stage" aria-hidden="true"><img class="photo" src="entreprise.jpg" alt="" width="382" height="406"></div>
-      </div>
-    </article>
-  </div>
-  <div class="car-nav wrap">
-    <div class="car-tabs" role="tablist" aria-label="Choisir un service">
-      <button type="button" role="tab" aria-selected="true" class="t-app">L'application</button><button type="button" role="tab" aria-selected="false" class="t-web">Sites web</button><button type="button" role="tab" aria-selected="false" class="t-gps">GPS et carburant</button><button type="button" role="tab" aria-selected="false" class="t-ind">Industrie</button>
-    </div>
-    <div class="car-arrows"><button type="button" id="prev" aria-label="Diapositive précédente">‹</button><button type="button" id="next" aria-label="Diapositive suivante">›</button></div>
   </div>
 </section>
-<script>
-(() => {
-  const track = document.getElementById('track'), slides = [...track.children], tabs = [...document.querySelectorAll('.car-tabs button')];
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches; let cur = 0, timer = null; const car = document.querySelector('.car');
-  const go = (i) => { cur = (i + slides.length) % slides.length; track.scrollTo({ left: slides[cur].offsetLeft, behavior: still ? 'auto' : 'smooth' }); mark(); };
-  const mark = () => { tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === cur))); slides.forEach((sl, k) => sl.classList.toggle('active', k === cur)); };
-  tabs.forEach((t, k) => (t.onclick = () => { go(k); stop(); }));
-  document.getElementById('prev').onclick = () => { go(cur - 1); stop(); };
-  document.getElementById('next').onclick = () => { go(cur + 1); stop(); };
-  track.addEventListener('scroll', () => { const k = Math.round(track.scrollLeft / track.clientWidth); if (k !== cur) { cur = k; mark(); } }, { passive: true });
-  const start = () => { if (!still && !timer) { car.classList.remove('playing'); void car.offsetWidth; car.classList.add('playing'); timer = setInterval(() => go(cur + 1), 7000); } };
-  const stop = () => { clearInterval(timer); timer = null; car.classList.remove('playing'); };
-  car.addEventListener('mouseenter', stop); car.addEventListener('mouseleave', start); car.addEventListener('focusin', stop); track.addEventListener('touchstart', stop, { passive: true });
-  mark(); start();
-})();
-</script>
-
-<section class="stats" aria-label="Unlimited Niger en chiffres"><div class="wrap">
-  <div><b>4</b><span>métiers : application, sites web, GPS, industrie</span></div>
-  <div><b>6</b><span>services réunis dans l'application Unlimited</span></div>
-  <div><b>250+</b><span>écrans vérifiés par nos tests automatiques</span></div>
-  <div><b>1</b><span>seul interlocuteur, à Niamey</span></div>
-</div></section>
-
-
 
 <section class="block sand" id="pourquoi"><div class="wrap">
   <div class="intro"><h2>Pourquoi nous choisir</h2><p>Une équipe nigérienne qui conçoit, installe et suit ses solutions elle-même, du premier échange à la maintenance.</p></div>
+  <div class="why-nums">
+    <div><b>3</b><span>métiers : web, GPS, matériel industriel</span></div>
+    <div><b>1</b><span>équipe à Niamey, du conseil à la maintenance</span></div>
+    <div><b>0 FCFA</b><span>pour le devis, sans engagement</span></div>
+  </div>
   <div class="why"><div class="why-tabs" role="tablist" aria-label="Nos points forts"><button type="button" role="tab" id="wt0" aria-controls="wp0" aria-selected="true"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="fgP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9AA4AE"/><stop offset="1" stop-color="#4B535B"/></linearGradient></defs><ellipse cx="32" cy="60" rx="12" ry="2.6" fill="#1C2228" opacity=".18"/><rect x="10" y="6" width="3.5" height="52" rx="1.5" fill="url(#fgP)"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#E05206"/><path d="M13.5 19c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#FFFFFF"/><path d="M13.5 29c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#0DB02B"/><circle cx="34" cy="24" r="3.4" fill="#E05206"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v30c-2-2-6-4-14 0s-18-4-28 0z" fill="none" stroke="#000" stroke-opacity=".08"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v6C44 12 26 18 13.5 14z" fill="#fff" opacity=".2"/></svg></span><span>Pensé pour le Niger</span></button><button type="button" role="tab" id="wt1" aria-controls="wp1" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="usA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AA9F0"/><stop offset="1" stop-color="#1D4F80"/></linearGradient><linearGradient id="usB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FA45A"/><stop offset="1" stop-color="#0B4A26"/></linearGradient><linearGradient id="usF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6B48A"/><stop offset="1" stop-color="#B9774A"/></linearGradient></defs><ellipse cx="32" cy="60" rx="22" ry="2.6" fill="#10243D" opacity=".18"/><circle cx="42" cy="20" r="8" fill="url(#usF)"/><path d="M28 50c0-10 6-16 14-16s14 6 14 16z" fill="url(#usA)"/><circle cx="23" cy="22" r="9" fill="url(#usF)"/><path d="M7 54c0-11 7-18 16-18s16 7 16 18z" fill="url(#usB)"/><path d="M7 54c0-11 7-18 16-18 4 0 8 1.5 10.5 4C24 38 14 44 12 54z" fill="#fff" opacity=".16"/><path d="M23 36l-3 6 3 3 3-3z" fill="#fff" opacity=".85"/></svg></span><span>Un seul interlocuteur</span></button><button type="button" role="tab" id="wt2" aria-controls="wp2" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs>
 <linearGradient id="riSh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A57BE0"/><stop offset="1" stop-color="#4A2779"/></linearGradient>
 <linearGradient id="riShR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs>
@@ -156,22 +97,21 @@
 <path d="M32 3l23 8v17c0 15-10 25-23 30C19 53 9 43 9 28V11z" fill="url(#riShR)"/>
 <path d="M32 7l19 6.6V28c0 12.6-8.2 21-19 25.6C21.2 49 13 40.6 13 28V13.6z" fill="url(#riSh)"/>
 <path d="M32 7l19 6.6V22C42 24 30 22 13 30V13.6z" fill="#fff" opacity=".18"/>
-<path d="M22 30l7 7 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sécurité d'abord</span></button><button type="button" role="tab" id="wt3" aria-controls="wp3" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="rkB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C7D0DA"/></linearGradient><linearGradient id="rkF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45C"/><stop offset="1" stop-color="#F06A1A"/></linearGradient><linearGradient id="rkW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AA9F0"/><stop offset="1" stop-color="#1D4F80"/></linearGradient></defs><ellipse cx="32" cy="60" rx="14" ry="2.6" fill="#10243D" opacity=".18"/><path d="M38 40c4 6 4 12 0 18-4-6-4-12 0-18z" fill="url(#rkF)" transform="rotate(45 32 32)"/><g transform="rotate(45 32 32)"><path d="M32 4c8 8 10 20 8 32H24c-2-12 0-24 8-32z" fill="url(#rkB)"/><path d="M24 36l-6 8 8-2zM40 36l6 8-8-2z" fill="#E05206"/><circle cx="32" cy="22" r="5" fill="url(#rkW)" stroke="#8E959C" stroke-width="1.5"/><path d="M28 38h8l-1 6h-6z" fill="#55606B"/><path d="M32 4c-5 5-7 12-7.6 20H32z" fill="#fff" opacity=".5"/></g><path d="M14 46c3 5 3 8 0 12-3-4-3-7 0-12z" fill="url(#rkF)" opacity=".9"/></svg></span><span>Rapide, même en 3G</span></button><button type="button" role="tab" id="wt4" aria-controls="wp4" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="clB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98B3A"/><stop offset="1" stop-color="#8C5A24"/></linearGradient><linearGradient id="clP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E7ECEF"/></linearGradient><linearGradient id="clG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FD06A"/><stop offset="1" stop-color="#0E8A3C"/></linearGradient></defs><ellipse cx="32" cy="60" rx="20" ry="2.6" fill="#2A1E05" opacity=".18"/><rect x="12" y="8" width="40" height="50" rx="5" fill="url(#clB)"/><rect x="16" y="14" width="32" height="40" rx="2" fill="url(#clP)"/><rect x="24" y="5" width="16" height="8" rx="2.5" fill="#9AA4AE"/><rect x="27" y="7" width="10" height="3" rx="1.5" fill="#55606B"/><path d="M21 24l3 3 5-6M21 34l3 3 5-6M21 44l3 3 5-6" fill="none" stroke="url(#clG)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 25h11M32 35h11M32 45h8" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Testé avant livraison</span></button><button type="button" role="tab" id="wt5" aria-controls="wp5" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="ivP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EE"/></linearGradient><linearGradient id="ivG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs><ellipse cx="32" cy="60" rx="18" ry="2.6" fill="#1C2228" opacity=".18"/><path d="M14 6h28l10 10v42l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-6 3z" fill="url(#ivP)" stroke="#C9D2DA"/><path d="M42 6v10h10z" fill="#C9D2DA"/><path d="M20 18h14M20 25h22M20 31h18" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/><rect x="20" y="37" width="24" height="9" rx="2" fill="#E4F2E8"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#0E6B34">FCFA</text><circle cx="46" cy="50" r="8" fill="url(#ivG)"/><path d="M43 50l2.2 2.2L49.5 48" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Devis clair et gratuit</span></button></div><div class="why-panels"><div class="why-panel" role="tabpanel" id="wp0" aria-labelledby="wt0"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="fgP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9AA4AE"/><stop offset="1" stop-color="#4B535B"/></linearGradient></defs><ellipse cx="32" cy="60" rx="12" ry="2.6" fill="#1C2228" opacity=".18"/><rect x="10" y="6" width="3.5" height="52" rx="1.5" fill="url(#fgP)"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#E05206"/><path d="M13.5 19c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#FFFFFF"/><path d="M13.5 29c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#0DB02B"/><circle cx="34" cy="24" r="3.4" fill="#E05206"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v30c-2-2-6-4-14 0s-18-4-28 0z" fill="none" stroke="#000" stroke-opacity=".08"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v6C44 12 26 18 13.5 14z" fill="#fff" opacity=".2"/></svg></span><h3>Pensé pour le Niger</h3><p>Nos solutions tiennent compte des réalités locales : connexions mobiles parfois faibles, usage sur téléphone, besoin de simplicité. Elles sont conçues et testées pour le terrain nigérien.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div><div class="why-panel" role="tabpanel" id="wp1" aria-labelledby="wt1"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="usA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AA9F0"/><stop offset="1" stop-color="#1D4F80"/></linearGradient><linearGradient id="usB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FA45A"/><stop offset="1" stop-color="#0B4A26"/></linearGradient><linearGradient id="usF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6B48A"/><stop offset="1" stop-color="#B9774A"/></linearGradient></defs><ellipse cx="32" cy="60" rx="22" ry="2.6" fill="#10243D" opacity=".18"/><circle cx="42" cy="20" r="8" fill="url(#usF)"/><path d="M28 50c0-10 6-16 14-16s14 6 14 16z" fill="url(#usA)"/><circle cx="23" cy="22" r="9" fill="url(#usF)"/><path d="M7 54c0-11 7-18 16-18s16 7 16 18z" fill="url(#usB)"/><path d="M7 54c0-11 7-18 16-18 4 0 8 1.5 10.5 4C24 38 14 44 12 54z" fill="#fff" opacity=".16"/><path d="M23 36l-3 6 3 3 3-3z" fill="#fff" opacity=".85"/></svg></span><h3>Un seul interlocuteur</h3><p>Conseil, réalisation, installation et maintenance : vous parlez à la même équipe du début à la fin, à Niamey. Pas de sous-traitant caché, pas de ticket perdu.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div><div class="why-panel" role="tabpanel" id="wp2" aria-labelledby="wt2"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs>
+<path d="M22 30l7 7 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sécurité et fiabilité</span></button><button type="button" role="tab" id="wt3" aria-controls="wp3" aria-selected="false"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="ivP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EE"/></linearGradient><linearGradient id="ivG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs><ellipse cx="32" cy="60" rx="18" ry="2.6" fill="#1C2228" opacity=".18"/><path d="M14 6h28l10 10v42l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-6 3z" fill="url(#ivP)" stroke="#C9D2DA"/><path d="M42 6v10h10z" fill="#C9D2DA"/><path d="M20 18h14M20 25h22M20 31h18" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/><rect x="20" y="37" width="24" height="9" rx="2" fill="#E4F2E8"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#0E6B34">FCFA</text><circle cx="46" cy="50" r="8" fill="url(#ivG)"/><path d="M43 50l2.2 2.2L49.5 48" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Devis clair et gratuit</span></button></div><div class="why-panels"><div class="why-panel" role="tabpanel" id="wp0" aria-labelledby="wt0"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="fgP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9AA4AE"/><stop offset="1" stop-color="#4B535B"/></linearGradient></defs><ellipse cx="32" cy="60" rx="12" ry="2.6" fill="#1C2228" opacity=".18"/><rect x="10" y="6" width="3.5" height="52" rx="1.5" fill="url(#fgP)"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#E05206"/><path d="M13.5 19c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#FFFFFF"/><path d="M13.5 29c10-4 18 4 28 0s12-2 14 0v10c-2-2-6-4-14 0s-18-4-28 0z" fill="#0DB02B"/><circle cx="34" cy="24" r="3.4" fill="#E05206"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v30c-2-2-6-4-14 0s-18-4-28 0z" fill="none" stroke="#000" stroke-opacity=".08"/><path d="M13.5 9c10-4 18 4 28 0s12-2 14 0v6C44 12 26 18 13.5 14z" fill="#fff" opacity=".2"/></svg></span><h3>Pensé pour le Niger</h3><p>Nos solutions tiennent compte des réalités locales : usage sur téléphone, connexions mobiles parfois faibles, besoin de simplicité. Nos sites et applications sont légers et s'ouvrent vite, même en 3G.</p></div><div class="why-panel" role="tabpanel" id="wp1" aria-labelledby="wt1"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="usA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AA9F0"/><stop offset="1" stop-color="#1D4F80"/></linearGradient><linearGradient id="usB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FA45A"/><stop offset="1" stop-color="#0B4A26"/></linearGradient><linearGradient id="usF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6B48A"/><stop offset="1" stop-color="#B9774A"/></linearGradient></defs><ellipse cx="32" cy="60" rx="22" ry="2.6" fill="#10243D" opacity=".18"/><circle cx="42" cy="20" r="8" fill="url(#usF)"/><path d="M28 50c0-10 6-16 14-16s14 6 14 16z" fill="url(#usA)"/><circle cx="23" cy="22" r="9" fill="url(#usF)"/><path d="M7 54c0-11 7-18 16-18s16 7 16 18z" fill="url(#usB)"/><path d="M7 54c0-11 7-18 16-18 4 0 8 1.5 10.5 4C24 38 14 44 12 54z" fill="#fff" opacity=".16"/><path d="M23 36l-3 6 3 3 3-3z" fill="#fff" opacity=".85"/></svg></span><h3>Un seul interlocuteur</h3><p>Conseil, réalisation, installation et maintenance : vous parlez à la même équipe du début à la fin, à Niamey. Pas de sous-traitant caché, pas de ticket perdu.</p></div><div class="why-panel" role="tabpanel" id="wp2" aria-labelledby="wt2"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs>
 <linearGradient id="riSh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A57BE0"/><stop offset="1" stop-color="#4A2779"/></linearGradient>
 <linearGradient id="riShR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs>
 <ellipse cx="32" cy="60" rx="17" ry="2.6" fill="#2A1646" opacity=".2"/>
 <path d="M32 3l23 8v17c0 15-10 25-23 30C19 53 9 43 9 28V11z" fill="url(#riShR)"/>
 <path d="M32 7l19 6.6V28c0 12.6-8.2 21-19 25.6C21.2 49 13 40.6 13 28V13.6z" fill="url(#riSh)"/>
 <path d="M32 7l19 6.6V22C42 24 30 22 13 30V13.6z" fill="#fff" opacity=".18"/>
-<path d="M22 30l7 7 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Sécurité d'abord</h3><p>Connexions chiffrées, codes secrets, double vérification pour les administrateurs, accès limités selon les rôles : la sécurité est prévue dès la conception.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div><div class="why-panel" role="tabpanel" id="wp3" aria-labelledby="wt3"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="rkB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C7D0DA"/></linearGradient><linearGradient id="rkF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45C"/><stop offset="1" stop-color="#F06A1A"/></linearGradient><linearGradient id="rkW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AA9F0"/><stop offset="1" stop-color="#1D4F80"/></linearGradient></defs><ellipse cx="32" cy="60" rx="14" ry="2.6" fill="#10243D" opacity=".18"/><path d="M38 40c4 6 4 12 0 18-4-6-4-12 0-18z" fill="url(#rkF)" transform="rotate(45 32 32)"/><g transform="rotate(45 32 32)"><path d="M32 4c8 8 10 20 8 32H24c-2-12 0-24 8-32z" fill="url(#rkB)"/><path d="M24 36l-6 8 8-2zM40 36l6 8-8-2z" fill="#E05206"/><circle cx="32" cy="22" r="5" fill="url(#rkW)" stroke="#8E959C" stroke-width="1.5"/><path d="M28 38h8l-1 6h-6z" fill="#55606B"/><path d="M32 4c-5 5-7 12-7.6 20H32z" fill="#fff" opacity=".5"/></g><path d="M14 46c3 5 3 8 0 12-3-4-3-7 0-12z" fill="url(#rkF)" opacity=".9"/></svg></span><h3>Rapide, même en 3G</h3><p>Nos sites et applications sont légers et s'ouvrent vite, même avec une connexion mobile faible. Ils peuvent aussi s'installer sur le téléphone comme une application.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div><div class="why-panel" role="tabpanel" id="wp4" aria-labelledby="wt4"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="clB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98B3A"/><stop offset="1" stop-color="#8C5A24"/></linearGradient><linearGradient id="clP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E7ECEF"/></linearGradient><linearGradient id="clG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FD06A"/><stop offset="1" stop-color="#0E8A3C"/></linearGradient></defs><ellipse cx="32" cy="60" rx="20" ry="2.6" fill="#2A1E05" opacity=".18"/><rect x="12" y="8" width="40" height="50" rx="5" fill="url(#clB)"/><rect x="16" y="14" width="32" height="40" rx="2" fill="url(#clP)"/><rect x="24" y="5" width="16" height="8" rx="2.5" fill="#9AA4AE"/><rect x="27" y="7" width="10" height="3" rx="1.5" fill="#55606B"/><path d="M21 24l3 3 5-6M21 34l3 3 5-6M21 44l3 3 5-6" fill="none" stroke="url(#clG)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 25h11M32 35h11M32 45h8" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/></svg></span><h3>Testé avant livraison</h3><p>Chaque projet passe par des tests automatiques qui vérifient les écrans et les parcours, sur ordinateur et sur téléphone, avant chaque mise en ligne.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div><div class="why-panel" role="tabpanel" id="wp5" aria-labelledby="wt5"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="ivP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EE"/></linearGradient><linearGradient id="ivG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs><ellipse cx="32" cy="60" rx="18" ry="2.6" fill="#1C2228" opacity=".18"/><path d="M14 6h28l10 10v42l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-6 3z" fill="url(#ivP)" stroke="#C9D2DA"/><path d="M42 6v10h10z" fill="#C9D2DA"/><path d="M20 18h14M20 25h22M20 31h18" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/><rect x="20" y="37" width="24" height="9" rx="2" fill="#E4F2E8"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#0E6B34">FCFA</text><circle cx="46" cy="50" r="8" fill="url(#ivG)"/><path d="M43 50l2.2 2.2L49.5 48" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Devis clair et gratuit</h3><p>Vous savez ce que vous payez avant de commencer. Le devis détaille la réalisation, l'installation et la maintenance, sans frais cachés.</p><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div></div></div>
+<path d="M22 30l7 7 13-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Sécurité et fiabilité</h3><p>Connexions chiffrées, accès limités selon les rôles, double vérification pour les administrateurs. Chaque projet est testé sur ordinateur et sur téléphone avant sa mise en ligne.</p></div><div class="why-panel" role="tabpanel" id="wp3" aria-labelledby="wt3"><span class="ic ri-ic"><svg viewBox="0 0 64 64" class="ri" aria-hidden="true"><defs><linearGradient id="ivP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EE"/></linearGradient><linearGradient id="ivG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A1"/><stop offset=".5" stop-color="#E2B955"/><stop offset="1" stop-color="#B8871F"/></linearGradient></defs><ellipse cx="32" cy="60" rx="18" ry="2.6" fill="#1C2228" opacity=".18"/><path d="M14 6h28l10 10v42l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-6 3z" fill="url(#ivP)" stroke="#C9D2DA"/><path d="M42 6v10h10z" fill="#C9D2DA"/><path d="M20 18h14M20 25h22M20 31h18" stroke="#9AA4AE" stroke-width="2.4" stroke-linecap="round"/><rect x="20" y="37" width="24" height="9" rx="2" fill="#E4F2E8"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#0E6B34">FCFA</text><circle cx="46" cy="50" r="8" fill="url(#ivG)"/><path d="M43 50l2.2 2.2L49.5 48" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Devis clair et gratuit</h3><p>Vous savez ce que vous payez avant de commencer. Le devis détaille la réalisation, l'installation et la maintenance, sans frais cachés.</p></div></div></div>
+  <div class="why-cta"><a class="btn btn-green" href="#contact" data-expert>Parler à un expert</a></div>
 </div></section>
 
-<section class="block" id="apropos"><div class="wrap about">
+<section class="block" id="apropos"><div class="wrap about about-short">
   <div>
     <h2>Qui sommes-nous</h2>
-    <p class="big">Unlimited Niger est une entreprise basée à Niamey qui réunit le digital et l'industrie : nous créons des sites web et des applications, nous équipons les véhicules de balises GPS et nous fournissons du matériel industriel.</p>
-    <p>Notre ambition : rendre les outils modernes accessibles aux particuliers, aux commerçants, aux entreprises et aux institutions du Niger, avec des solutions simples, fiables et adaptées au terrain.</p>
-    <p>Notre devise résume notre façon de travailler : <b>l'innovation au service de votre réussite</b>.</p>
+    <p class="big">Notre devise : <b>l'innovation au service de votre réussite</b>.</p>
   </div>
   <div class="values">
     <div><h3>Notre mission</h3><p>Simplifier le quotidien et l'activité de nos clients grâce à la technologie.</p></div>
@@ -180,44 +120,23 @@
   </div>
 </div></section>
 
-
-
-<section class="block" id="technologies"><div class="wrap">
-  <div class="intro"><h2>Notre stack technologique</h2><p>Des technologies modernes, éprouvées et économes, choisies pour la vitesse, la sécurité et un coût d'hébergement maîtrisé.</p></div>
-  <div class="stack">
-    <div><h3>Web et mobile</h3><ul><li>HTML5, CSS3</li><li>JavaScript</li><li>Applications web installables (PWA)</li><li>Mode hors connexion</li></ul></div>
-    <div><h3>Serveur et cloud</h3><ul><li>Cloudflare Pages et Workers</li><li>Base de données Cloudflare D1 (SQL)</li><li>Node.js</li><li>Réseau mondial et HTTPS</li></ul></div>
-    <div><h3>Paiement</h3><ul><li>Carte Unlimited</li><li>Code secret à chaque achat</li><li>Reçus électroniques</li><li>Remboursement sur la carte</li></ul></div>
-    <div><h3>Qualité et sécurité</h3><ul><li>Tests automatiques (Playwright)</li><li>Double vérification (codes à 6 chiffres)</li><li>Mots de passe chiffrés</li><li>Code source sur GitHub</li></ul></div>
-    <div><h3>GPS et terrain</h3><ul><li>Balises GPS pour véhicules et engins</li><li>Mesure du niveau de carburant</li><li>Cartes et suivi en temps réel</li><li>Alertes automatiques</li></ul></div>
-  </div>
-</div></section>
-
 <section class="block sand" id="faq"><div class="wrap faq">
   <div class="intro"><h2>Questions fréquentes</h2></div>
-  <details><summary>Combien coûte un site web ou une application ?</summary><p>Le prix dépend de la taille du projet : nombre de pages, fonctions, paiement en ligne, application mobile. Après un premier échange gratuit, nous vous envoyons un devis détaillé.</p></details>
+  <details><summary>Combien coûte un site web ou une application ?</summary><p>Le prix dépend de la taille du projet : nombre de pages, fonctions, application mobile. Après un premier échange gratuit, nous vous envoyons un devis détaillé.</p></details>
   <details><summary>En combien de temps mon site est-il prêt ?</summary><p>Un site vitrine se réalise en quelques semaines ; une application sur mesure demande plus de temps. Le planning est fixé avec vous dans le devis.</p></details>
-  <details><summary>Pouvez-vous intégrer le paiement en ligne ?</summary><p>Oui. Nous intégrons des solutions de paiement en ligne sécurisées, adaptées à votre activité, dans votre site ou votre application.</p></details>
   <details><summary>Où installez-vous les balises GPS ?</summary><p>Nos techniciens se déplacent pour installer la balise sur votre véhicule ou votre engin, au lieu et à la date convenus. Contactez-nous pour les zones couvertes.</p></details>
   <details><summary>Le matériel industriel est-il livré ?</summary><p>Oui, nous pouvons livrer le matériel sur votre site et assurer sa mise en service. Les conditions sont précisées dans le devis.</p></details>
   <details><summary>Assurez-vous la maintenance ?</summary><p>Oui : maintenance des sites et applications, suivi des balises GPS et entretien du matériel, selon le contrat choisi.</p></details>
 </div></section>
 
-<section class="block" id="partenaires"><div class="wrap">
-  <div class="partner">
-    <div><h2>Devenez partenaire</h2><p>Entreprises de services, commerçants, institutions : rejoignez le réseau Unlimited Niger et recevez les paiements de nos clients. Parlons-en.</p>
-      <a class="btn btn-gold" href="#contact" data-expert>Nous contacter</a></div>
-    
-  </div>
-</div></section>
-
 <section class="block" id="contact"><div class="wrap">
-  <div class="intro"><h2>Contact</h2><p>Une demande de devis, une question ou un partenariat ? Notre équipe vous répond.</p></div>
+  <div class="intro"><h2>Contact</h2><p>Un devis, une question ou un partenariat ? Notre équipe vous répond.</p></div>
   <div class="contact">
     <div class="ct-tel"><h3>Téléphone</h3><p><a href="tel:+22797970709">+227 97 97 07 09</a><br><a href="tel:+22792970709">+227 92 97 07 09</a></p></div>
     <div><h3>E-mail</h3><p><a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a></p></div>
     <div><h3>Adresse</h3><p>Niamey, Niger</p></div>
   </div>
+  <p class="ct-partner" id="partenaires"><b>Devenez partenaire.</b> Entreprises de services, commerçants, institutions : rejoignez le réseau Unlimited Niger.</p>
 </div></section>
 
 </main>
@@ -306,7 +225,7 @@ ${f.get('message') || ''}`;
 <path d="M96 16 L77 29 L98 38 Z" fill="#C9972B" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></g></svg><b>UNLIMITED <span>NIGER</span></b></a>
     <p style="margin-top:14px;max-width:36ch">L'innovation au service de votre réussite. Solutions digitales et industrielles au Niger.</p>
     <p style="margin-top:10px"><a href="tel:+22797970709">+227 97 97 07 09</a><br><a href="tel:+22792970709">+227 92 97 07 09</a><br><a href="mailto:unlimited_niger@outlook.be">unlimited_niger@outlook.be</a></p></div>
-  <div><h4>Unlimited Niger</h4><ul><li><a href="#services">Nos services</a></li><li><a href="#apropos">Qui sommes-nous</a></li><li><a href="#pourquoi">Pourquoi nous choisir</a></li><li></li><li><a href="#technologies">Nos technologies</a></li><li><a href="#faq">Questions fréquentes</a></li><li><a href="#application">L'application Unlimited</a></li><li><a href="sites-web.html">Sites web et applications</a></li><li><a href="gps.html">Balises GPS et carburant</a></li><li><a href="materiel-industriel.html">Matériel industriel</a></li><li><a href="#partenaires">Devenir partenaire</a></li></ul></div>
+  <div><h4>Unlimited Niger</h4><ul><li><a href="#services">Nos services</a></li><li><a href="#apropos">Qui sommes-nous</a></li><li><a href="#pourquoi">Pourquoi nous choisir</a></li><li></li><li><a href="#faq">Questions fréquentes</a></li><li><a href="#application">L'application Unlimited</a></li><li><a href="sites-web.html">Sites web et applications</a></li><li><a href="gps.html">Balises GPS et carburant</a></li><li><a href="materiel-industriel.html">Matériel industriel</a></li><li><a href="#partenaires">Devenir partenaire</a></li></ul></div>
   <div><h4>Informations légales</h4><ul><li><a href="conditions.html">Conditions générales</a></li><li><a href="remboursement.html">Annulation et remboursement</a></li><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
   <p class="legal">© 2026 Unlimited Niger · Tous vos achats se paient avec la carte Unlimited. Prix en francs CFA (FCFA).</p>
 </div></footer>
