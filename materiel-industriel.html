@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://unlimitedniger.com/materiel-industriel.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=d64152b4">
+<link rel="stylesheet" href="style.css?v=03dfdeed">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -145,6 +145,15 @@ ${f.get('message') || ''}`;
       if (!nx) { c.style.removeProperty('--s'); return; } const t = nx.getBoundingClientRect().top; const cover = Math.max(0, Math.min(1, (a.bottom - t) / a.height));
       c.style.setProperty('--s', (1 - cover * 0.05).toFixed(3)); c.style.setProperty('--dim', (cover * 0.12).toFixed(3)); }); };
     addEventListener('scroll', () => { if (!tk) { tk = true; requestAnimationFrame(upd); } }, { passive: true }); upd(); }
+  // Cartes de services : transitions au défilement (texte, points clés, image)
+  const ucs = [...document.querySelectorAll('.bento-uni > .uc')];
+  if (ucs.length && 'IntersectionObserver' in window && !still) {
+    ucs.forEach((c) => c.classList.add('fx'));
+    const fo = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('fx-in'); fo.unobserve(e.target); } }), { threshold: 0.25 });
+    ucs.forEach((c) => fo.observe(c));
+    let tk = false; const par = () => { tk = false; ucs.forEach((c) => { const r = c.getBoundingClientRect(); const k = Math.max(-1, Math.min(1, (r.top + r.height / 2 - innerHeight / 2) / innerHeight)); c.style.setProperty('--par', k.toFixed(3)); }); };
+    addEventListener('scroll', () => { if (!tk) { tk = true; requestAnimationFrame(par); } }, { passive: true }); par();
+  }
   // Cartes d'offres : un toucher agrandit la carte pour lire le détail
   const zoom = document.getElementById('zoom');
   if (zoom && zoom.showModal) {
@@ -184,7 +193,7 @@ ${f.get('message') || ''}`;
   const showWhy = (k) => wt.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); document.getElementById('wp' + i).hidden = i !== k; });
   if (wt.length) { wt.forEach((t, i) => (t.onclick = () => showWhy(i))); showWhy(0); } mn.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   const onScroll = () => top.classList.toggle('scrolled', scrollY > 8); onScroll(); addEventListener('scroll', onScroll, { passive: true });
-  const sel = '.intro, .tcard, .pcard, .bt, .why, .stats .wrap > div, .offer, .case, .stack > div, .values > div, .steps li, .faq details, .partner, .contact > div, .about > div:first-child, .who li, .formule, .doc h2, .why-card, .why-nums > div, .zone-txt, .zone-map-box, .pj-txt, .pj-form, .zz-img, .zz-txt, .zone-list li, .car-solo .slide-txt, .car-solo .stage, .ct-partner, .bento-h';
+  const sel = '.intro, .tcard, .pcard, .bt:not(.uc), .why, .stats .wrap > div, .offer, .case, .stack > div, .values > div, .steps li, .faq details, .partner, .contact > div, .about > div:first-child, .who li, .formule, .doc h2, .why-card, .why-nums > div, .zone-txt, .zone-map-box, .pj-txt, .pj-form, .zz-img, .zz-txt, .zone-list li, .car-solo .slide-txt, .car-solo .stage, .ct-partner, .bento-h';
   const els = [...document.querySelectorAll(sel)];
   els.forEach((el) => { const sib = [...el.parentElement.children].filter((x) => x.matches(sel)); el.style.setProperty('--d', Math.min(sib.indexOf(el), 6) * 80 + 'ms'); el.classList.add('rv'); });
   if (still || !('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('in')); return; }
