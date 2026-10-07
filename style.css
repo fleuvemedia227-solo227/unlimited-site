@@ -1576,3 +1576,62 @@ footer .ft-h2 { margin-top: 18px; }
 @media (max-width: 860px) { .hx3 .hx-map { right: auto; left: 50%; top: 4%; width: 120vw; transform: translateX(-50%); opacity: .28; } }
 @media (prefers-reduced-motion: reduce) { .hm-arc { stroke-dashoffset: 0; animation: none; } .hm-car { display: none; } }
 @media (min-width: 861px) { .hx3 .hx-map { right: 1%; width: min(700px, 54vw); top: 52%; } }
+
+
+/* =================== STYLE : relief, entrées, motif nigérien, typographie =================== */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* 3. Motif nigérien (inspiré du cuir et des croix touarègues) dans les bandes vertes */
+.hx, .projet, footer, .mnav, .g-also, .why-card { position: relative; isolation: isolate; }
+.hx::after, .projet::after, footer::after, .mnav::after, .g-also::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2756%27%20height%3D%2756%27%20viewBox%3D%270%200%2056%2056%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23F6C453%27%20stroke-width%3D%271.4%27%3E%3Cpath%20d%3D%27M28%206%20L40%2018%20L28%2030%20L16%2018%20Z%27/%3E%3Cpath%20d%3D%27M28%2012%20L34%2018%20L28%2024%20L22%2018%20Z%27/%3E%3Cpath%20d%3D%27M28%2030%20V50%20M20%2042%20H36%27/%3E%3Cpath%20d%3D%27M0%2046%20L10%2056%20M10%2046%20L0%2056%20M46%200%20L56%2010%20M56%200%20L46%2010%27/%3E%3Ccircle%20cx%3D%2728%27%20cy%3D%2718%27%20r%3D%271.6%27%20fill%3D%27%23F6C453%27/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px; opacity: .09;
+  -webkit-mask-image: radial-gradient(120% 90% at 80% 20%, #000 0%, transparent 75%); mask-image: radial-gradient(120% 90% at 80% 20%, #000 0%, transparent 75%); }
+.hx::after { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+.projet > .wrap, footer > .wrap, .g-also > * { position: relative; z-index: 1; }
+.mnav > .wrap { position: relative; z-index: 1; }
+.why-card::after { content: ""; position: absolute; right: -10px; bottom: -10px; width: 112px; height: 112px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2756%27%20height%3D%2756%27%20viewBox%3D%270%200%2056%2056%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23F6C453%27%20stroke-width%3D%271.4%27%3E%3Cpath%20d%3D%27M28%206%20L40%2018%20L28%2030%20L16%2018%20Z%27/%3E%3Cpath%20d%3D%27M28%2012%20L34%2018%20L28%2024%20L22%2018%20Z%27/%3E%3Cpath%20d%3D%27M28%2030%20V50%20M20%2042%20H36%27/%3E%3Cpath%20d%3D%27M0%2046%20L10%2056%20M10%2046%20L0%2056%20M46%200%20L56%2010%20M56%200%20L46%2010%27/%3E%3Ccircle%20cx%3D%2728%27%20cy%3D%2718%27%20r%3D%271.6%27%20fill%3D%27%23F6C453%27/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px; opacity: .12; pointer-events: none; border-radius: 0 0 18px 0; -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 20%, transparent 70%); mask-image: radial-gradient(circle at 100% 100%, #000 20%, transparent 70%); }
+
+/* 4. Typographie : trait doré dessiné sous le mot clé, chiffres géants */
+.mk { position: relative; display: inline-block; white-space: nowrap; }
+.mk::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: -.12em; height: .3em; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20200%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%209%20C%2040%203%2C%2090%203%2C%20130%207%20S%20185%2011%2C%20197%205%27%20fill%3D%27none%27%20stroke%3D%27%23E2B23F%27%20stroke-width%3D%275%27%20stroke-linecap%3D%27round%27/%3E%3C/svg%3E") no-repeat 0 0 / 100% 100%; z-index: -1;
+  clip-path: inset(0 100% 0 0); transition: clip-path .9s cubic-bezier(.6,0,.2,1) .35s; }
+.rv.in .mk::after, .intro.in .mk::after, html:not(.js) .mk::after, .car-solo .mk::after { clip-path: inset(0 0 0 0); }
+.intro h2, .bento-h, .car-solo .h-slide { position: relative; z-index: 0; }
+.why-nums b { font-size: clamp(40px, 5.4vw, 64px) !important; letter-spacing: -0.04em !important; line-height: .95 !important;
+  background: linear-gradient(180deg, #1E8A3C 0%, #0C3B22 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+.why-nums div:nth-child(3) b { background: linear-gradient(180deg, #E2B23F, #A87A14); -webkit-background-clip: text; background-clip: text; }
+@media (max-width: 760px) { .why-nums b { font-size: 30px !important; } }
+
+/* 1. Relief et lumière */
+@media (hover: hover) and (pointer: fine) {
+  .bt, .offer, .why-card, .faq details, .contact > div, .zone-list li, .g-also .ga, .al, .hx-tabs button { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, background-color .25s ease; }
+  .bt:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -28px rgba(12,59,34,.45), 0 0 0 1px rgba(12,59,34,.06) !important; }
+  .offer:hover, .faq details:hover, .contact > div:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -22px rgba(12,59,34,.4) !important; }
+  .why-card:hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: 0 34px 60px -26px rgba(0,0,0,.55); }
+  .zone-list li:hover, .al:hover { transform: translateY(-2px); }
+  .btn { will-change: auto; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 26px -12px rgba(12,59,34,.55); }
+}
+.bt:active, .offer:active, .btn:active, .why-card:active, .ga:active, .al:active { transform: scale(.98); transition-duration: .1s; }
+/* reflet doré qui traverse les boutons or */
+.btn-gold { position: relative; overflow: hidden; isolation: isolate; }
+.btn-gold::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 40%; z-index: -1; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent); transform: translateX(-120%) skewX(-18deg);
+  animation: sheen 5.5s ease-in-out 2s infinite; }
+@keyframes sheen { 0%, 70% { transform: translateX(-120%) skewX(-18deg); } 85%, 100% { transform: translateX(320%) skewX(-18deg); } }
+
+/* 2. Entrées en scène : un peu plus amples et légèrement zoomées */
+.js .rv { transform: translateY(28px) scale(.985); }
+.js .rv.in { transform: none; }
+.js .zone-map-box.rv { transform: translateX(30px) scale(.97); }
+.js .zz-img.rv { transform: translateX(-30px); }
+.js .zone-map-box.rv.in, .js .zz-img.rv.in { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-gold::after { animation: none; display: none; }
+  .mk::after { clip-path: none; transition: none; }
+  .js .rv, .js .rv.in { transform: none !important; }
+}
+@media (min-width: 900px) { footer .wrap { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }

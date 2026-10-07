@@ -48,7 +48,7 @@
 </section>
 <div class="suite">
 <section class="block svc-zz"><div class="wrap zz">
-  <div class="zz-img"><img src="web-ux.jpg" alt="" width="600" height="420" loading="lazy"><span class="zz-badge">Sur mesure</span></div>
+  <div class="zz-img"><img decoding="async" src="web-ux.jpg" alt="" width="600" height="420" loading="lazy"><span class="zz-badge">Sur mesure</span></div>
   <div class="zz-txt">
     <p class="zz-kicker">Sites web et applications</p>
     <h2>Votre site et votre application, <em>sur mesure</em>.</h2>
@@ -59,11 +59,11 @@
 </div></section>
 
 <section class="block alt"><div class="wrap">
-  <div class="intro"><h2>Comment nous travaillons</h2></div>
+  <div class="intro"><h2>Comment nous <span class="mk">travaillons</span></h2></div>
   <ol class="steps"><li><h3>Échange sur votre besoin</h3><p>Nous écoutons votre projet, vos objectifs et votre budget. Ce premier échange est gratuit.</p></li><li><h3>Devis et maquette</h3><p>Vous recevez un devis clair et une maquette pour voir votre site ou votre application avant la réalisation.</p></li><li><h3>Réalisation et tests</h3><p>Nous développons, puis testons sur ordinateur et sur téléphone, avec vos retours à chaque étape.</p></li><li><h3>Mise en ligne et suivi</h3><p>Nous publions le site ou l'application, vous formons à son utilisation et assurons la maintenance.</p></li></ol>
 </div></section>
 <section class="block"><div class="wrap">
-  <div class="intro"><h2>Pour qui ?</h2></div>
+  <div class="intro"><h2>Pour <span class="mk">qui</span> ?</h2></div>
   <ul class="who"><li>Commerces et boutiques</li><li>PME et grandes entreprises</li><li>ONG et associations</li><li>Institutions et administrations</li><li>Écoles et centres de formation</li><li>Cliniques et pharmacies</li><li>Hôtels et restaurants</li><li>Transporteurs</li></ul>
   <div class="partner" style="margin-top:44px"><div><h2>Parlons de votre projet</h2><p>Décrivez-nous votre besoin : nous vous répondons avec un devis gratuit et sans engagement.</p>
     <div class="cta" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px"><a class="btn btn-gold" href="mailto:unlimited_niger@outlook.be?subject=Devis%20site%20web%20/%20application">Écrire un e-mail</a><a class="btn btn-line" href="tel:+22797970709">+227 97 97 07 09</a><a class="btn btn-line" href="tel:+22792970709">+227 92 97 07 09</a></div></div></div>
@@ -175,7 +175,7 @@ ${f.get('message') || ''}`;
   const showWhy = (k) => wt.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); document.getElementById('wp' + i).hidden = i !== k; });
   if (wt.length) { wt.forEach((t, i) => (t.onclick = () => showWhy(i))); showWhy(0); } mn.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   const onScroll = () => top.classList.toggle('scrolled', scrollY > 8); onScroll(); addEventListener('scroll', onScroll, { passive: true });
-  const sel = '.intro, .tcard, .pcard, .bt, .why, .stats .wrap > div, .offer, .case, .stack > div, .values > div, .steps li, .faq details, .partner, .contact > div, .about > div:first-child, .who li, .formule, .doc h2';
+  const sel = '.intro, .tcard, .pcard, .bt, .why, .stats .wrap > div, .offer, .case, .stack > div, .values > div, .steps li, .faq details, .partner, .contact > div, .about > div:first-child, .who li, .formule, .doc h2, .why-card, .why-nums > div, .zone-txt, .zone-map-box, .pj-txt, .pj-form, .zz-img, .zz-txt, .zone-list li, .car-solo .slide-txt, .car-solo .stage, .ct-partner, .bento-h';
   const els = [...document.querySelectorAll(sel)];
   els.forEach((el) => { const sib = [...el.parentElement.children].filter((x) => x.matches(sel)); el.style.setProperty('--d', Math.min(sib.indexOf(el), 6) * 80 + 'ms'); el.classList.add('rv'); });
   if (still || !('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('in')); return; }
