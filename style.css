@@ -1642,3 +1642,71 @@ html { scroll-behavior: smooth; }
 .mnav .mn-lang { display: inline-flex; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); color: #fff !important; font: 700 14px var(--body); text-decoration: none; }
 .top.menu-open .lang:not(.mn-lang) { visibility: hidden; }
 @media (max-width: 760px) { .top .lang { margin-left: auto; margin-right: 6px; height: 32px; min-width: 38px; } }
+
+/* ===================== AÉRER LE SITE ===================== */
+/* Rien ne dépasse sur les côtés (petits écrans) */
+html, body { overflow-x: clip; }
+
+/* Rythme : même respiration entre toutes les sections */
+.suite section.block, .suite #pourquoi { padding: 112px 0 !important; }
+.suite .devis-sec { padding: 0 0 112px !important; }
+.suite #offres { padding-bottom: 72px !important; }
+.bento-sec { padding: 104px 0 48px !important; }
+.projet { padding: 112px 0 !important; }
+.suite .intro { margin-bottom: 40px; }
+.suite .intro p { margin-top: 16px; line-height: 1.6; }
+
+/* Introduction des services : plus courte et plus lisible */
+.bento-sec .bento-h { max-width: 24ch; font-size: clamp(26px, 3vw, 38px) !important; line-height: 1.18; }
+.bento-sec .bento-h > span:not(.mk) { display: block; margin-top: 14px; max-width: 46ch; font: 500 clamp(16px, 1.5vw, 19px)/1.55 var(--body); color: var(--muted); }
+.bento { gap: 24px !important; margin-top: 48px !important; }
+.offers { gap: 20px !important; }
+.why-row { gap: 22px !important; }
+.why-nums { gap: 18px !important; margin-bottom: 36px !important; }
+.faq details + details { margin-top: 14px; }
+
+/* En-tête : plus d'air autour du titre */
+.hx .hx-in { padding-top: 72px; row-gap: 48px; }
+.hx-sub { margin-top: 20px !important; }
+.hx-pills { margin-top: 26px !important; }
+.hx-also { margin-top: 12px; }
+
+@media (max-width: 860px) {
+  /* Rythme téléphone */
+  .suite section.block, .suite #pourquoi { padding: 72px 0 !important; }
+  .suite .devis-sec { padding: 0 0 72px !important; }
+  .suite #offres { padding-bottom: 48px !important; }
+  .bento-sec { padding: 64px 0 32px !important; }
+  .projet { padding: 72px 0 !important; }
+  .suite .intro { margin-bottom: 28px; }
+
+  /* En-tête téléphone : moins chargé */
+  .hx .hx-in { padding: 36px 0 84px; row-gap: 26px; }
+  .hx-mark svg { width: 56px !important; height: 56px !important; }
+  .hx h1 { font-size: 36px !important; line-height: 1.08; }
+  .hx-sub { font-size: 16px !important; max-width: 30ch; margin-left: auto; margin-right: auto; }
+  .hx-stage { height: 250px !important; }
+  .hx-also { display: none !important; }                  /* déjà présents dans la carte « Et aussi, sur le terrain » */
+
+  /* Cartes de services : plus compactes */
+  .bento { gap: 16px !important; margin-top: 32px !important; }
+
+  /* « Ce que nous proposons » : 2 cartes par ligne, textes entiers */
+  .offers.zoomable { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  .offers.zoomable .offer { padding: 18px 12px !important; }
+
+  /* Chiffres : une ligne chacun, chiffre à gauche */
+  .why-nums { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .why-nums div { display: flex; align-items: center; gap: 16px; padding: 14px 18px !important; }
+  .why-nums b { font-size: 34px !important; min-width: 3.4ch; }
+  .why-nums span { margin-top: 0 !important; font-size: 14px !important; }
+
+  .why-row { gap: 14px !important; }
+}
+
+/* En-tête : bas droit (plus de biais) et une seule pastille */
+.hx .hx-bg, .hx::after, .bhero .bh-bg { clip-path: none !important; }
+.hx .hx-in { padding-bottom: 88px !important; }
+@media (max-width: 860px) { .hx .hx-in { padding-bottom: 56px !important; } }
+.bento-sec .bento-h .mk { color: var(--leaf) !important; font: inherit !important; display: inline-block; margin: 0 !important; }
+@media (min-width: 861px) { .hx .hx-in { padding-bottom: 64px !important; } }
