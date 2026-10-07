@@ -1562,3 +1562,17 @@ html:not(.js) .zone-map .zm-arc { opacity: .95; }
 .mnav .mn-more span { font: 700 12.5px/1 var(--body); color: #FFE08A; margin-bottom: 6px; }
 .mnav .mn-more a { color: rgba(255,255,255,.85) !important; font: 500 15px/1.2 var(--body); padding: 8px 0; border: 0 !important; text-decoration: none; }
 footer .ft-h2 { margin-top: 18px; }
+
+/* Carte du Niger animée en fond d'en-tête, discrète */
+.hx3 .hx-map { position: absolute; z-index: 0; pointer-events: none; right: -2%; top: 50%; width: min(760px, 62vw); transform: translateY(-46%); opacity: .38; }
+.hx3 .hx-in { z-index: 1; }
+.hm-land { fill: rgba(255,255,255,.06); stroke: rgba(246,196,83,.7); stroke-width: 2.5; stroke-linejoin: round; }
+.hm-arc { fill: none; stroke: rgba(246,196,83,.75); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: hmDraw 1.4s cubic-bezier(.4,0,.2,1) var(--d) forwards; }
+@keyframes hmDraw { to { stroke-dashoffset: 0; } }
+.hm-dot { fill: rgba(255,255,255,.8); }
+.hm-cap { fill: #F6C453; animation: hmPulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes hmPulse { 50% { transform: scale(1.8); opacity: .5; } }
+.hm-car { fill: #FFE08A; stroke: #fff; stroke-width: 1.5; }
+@media (max-width: 860px) { .hx3 .hx-map { right: auto; left: 50%; top: 4%; width: 120vw; transform: translateX(-50%); opacity: .28; } }
+@media (prefers-reduced-motion: reduce) { .hm-arc { stroke-dashoffset: 0; animation: none; } .hm-car { display: none; } }
+@media (min-width: 861px) { .hx3 .hx-map { right: 1%; width: min(700px, 54vw); top: 52%; } }
