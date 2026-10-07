@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://unlimitedniger.com/remboursement.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=fbce456d">
+<link rel="stylesheet" href="style.css?v=c6dafb46">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -125,6 +125,13 @@ ${f.get('message') || ''}`;
     document.addEventListener('visibilitychange', () => { if (document.hidden) { clearInterval(timer); timer = null; } else play(); });
     if (still) hx.classList.add('still'); play();
   }
+  // Cartes de services : elles montent et se superposent au défilement (sans changer les cartes)
+  const bts = [...document.querySelectorAll('.bento > .bt')];
+  if (bts.length && !still) { let tk = false;
+    const upd = () => { tk = false; bts.forEach((c) => { const a = c.getBoundingClientRect(); const nx = bts.find((x) => x.getBoundingClientRect().top > a.top + 8);
+      if (!nx) { c.style.removeProperty('--s'); return; } const t = nx.getBoundingClientRect().top; const cover = Math.max(0, Math.min(1, (a.bottom - t) / a.height));
+      c.style.setProperty('--s', (1 - cover * 0.05).toFixed(3)); c.style.setProperty('--dim', (cover * 0.12).toFixed(3)); }); };
+    addEventListener('scroll', () => { if (!tk) { tk = true; requestAnimationFrame(upd); } }, { passive: true }); upd(); }
   // Cartes d'offres : un toucher agrandit la carte pour lire le détail
   const zoom = document.getElementById('zoom');
   if (zoom && zoom.showModal) {
