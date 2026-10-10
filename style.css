@@ -1813,3 +1813,29 @@ html, body { overflow-x: clip; }
 .bento-uni > .uc.fx-in::before { opacity: 1; }
 @media (max-width: 860px) { .uc.fx .uc-frame { transform: translateY(30px) scale(.96); } }
 @media (prefers-reduced-motion: reduce) { .uc.fx *, .uc.fx::before { opacity: 1 !important; transform: none !important; translate: none !important; transition: none !important; } }
+
+/* ===== En-tête : carte du monde, Niger en avant ===== */
+.hx3 .hx-map.wmap { position: absolute; z-index: 0; pointer-events: none; left: 50%; top: 50%; width: min(1500px, 125vw); right: auto; transform: translate(-46%, -50%); opacity: .55; }
+.wmap .wm-dots { stroke: rgba(255,255,255,.32); stroke-width: 4.2; stroke-linecap: round; fill: none; }
+.wmap .wm-niger { fill: #F6C453; stroke: #FFE08A; stroke-width: 1; filter: drop-shadow(0 0 10px rgba(246,196,83,.8)); }
+.wmap .wm-arc { fill: none; stroke: #F6C453; stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: hmDraw 1.6s cubic-bezier(.4,0,.2,1) var(--d) forwards; }
+.wmap .wm-city { fill: #fff; } .wmap .wm-pkt { fill: #FFE08A; }
+.wmap .wm-niamey { fill: #fff; }
+.wmap .wm-halo { fill: rgba(246,196,83,.45); animation: hmPulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.wmap .wm-lbl { font: 800 18px var(--head); fill: #FFE08A; letter-spacing: .12em; }
+@media (max-width: 860px) { .hx3 .hx-map.wmap { width: 230vw; top: 30%; transform: translate(-44%, -50%); opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .wmap .wm-arc { stroke-dashoffset: 0; animation: none; } .wmap .wm-pkt { display: none; } }
+
+/* ===== Stickers téléphone et e-mail (formulaire) ===== */
+.pj-ct a { display: inline-flex; align-items: center; gap: 12px; border-bottom: 0 !important; }
+.pj-ct .stk { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: #F6C453; color: #1E1503; box-shadow: 0 8px 18px -8px rgba(0,0,0,.45); }
+.pj-ct .stk svg { width: 18px; height: 18px; }
+.pj-ct li + li { margin-top: 4px; }
+
+/* ===== Confidentialité avant lancement : carte et application floutées ===== */
+
+.uc-frame.f-card, .car-solo .stage, .sc-app { position: relative; }
+.uc-frame.f-card::after, .car-solo .stage::after, .sc-app::after { content: "Bientôt disponible"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
+  padding: 10px 18px; border-radius: 999px; background: rgba(255,255,255,.92); color: #6B4E0E; font: 800 15px var(--body); box-shadow: 0 10px 24px -10px rgba(0,0,0,.4); white-space: nowrap; }
+@media (min-width: 861px) { .hx3 .hx-map.wmap { transform: translate(-49.5%, -47%); opacity: .6; } .hx h1 { font-size: clamp(34px, 4.2vw, 54px) !important; } }
+@media (max-width: 860px) { .wmap .wm-lbl { display: none; } }
