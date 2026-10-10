@@ -1839,3 +1839,20 @@ html, body { overflow-x: clip; }
   padding: 10px 18px; border-radius: 999px; background: rgba(255,255,255,.92); color: #6B4E0E; font: 800 15px var(--body); box-shadow: 0 10px 24px -10px rgba(0,0,0,.4); white-space: nowrap; }
 @media (min-width: 861px) { .hx3 .hx-map.wmap { transform: translate(-49.5%, -47%); opacity: .6; } .hx h1 { font-size: clamp(34px, 4.2vw, 54px) !important; } }
 @media (max-width: 860px) { .wmap .wm-lbl { display: none; } }
+
+/* ===== En-tête : globe rond centré sur le Niger ===== */
+.hx3 .hx-map.globe { left: auto; right: 4%; top: 50%; width: min(700px, 58vw); transform: translate(0, -50%); opacity: .85; }
+.globe .gl-sea { fill: rgba(8,55,28,.38); }
+.globe .gl-grat { fill: none; stroke: rgba(255,255,255,.12); stroke-width: 1; }
+.globe .gl-rim { fill: none; stroke: rgba(246,196,83,.55); stroke-width: 1.5; }
+.globe .wm-dots { stroke: rgba(255,255,255,.5); stroke-width: 5; }
+.globe .wm-dots-s { stroke-width: 3.4; stroke: rgba(255,255,255,.3); }
+.globe .wm-arc { stroke-width: 2; }
+.globe { animation: glFloat 8s ease-in-out infinite; }
+@keyframes glFloat { 50% { translate: 0 -10px; } }
+@media (min-width: 861px) { .hx3 .hx-map.globe { transform: translate(0, -50%); } }
+@media (max-width: 860px) { .hx3 .hx-map.globe { right: auto; left: 50%; top: 22%; width: 140vw; transform: translate(-50%, -50%); opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .globe { animation: none; } }
+@media (min-width: 861px) { .hx3 .hx-map.globe { right: auto; left: calc(50% - 40px); width: 640px; transform: translate(-50%, -50%); opacity: .7; } }
+.pj-txt h2 .pj-q { display: block; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; letter-spacing: -0.01em; white-space: nowrap; color: #fff; margin-bottom: 8px; }
+.pj-txt h2 > span { display: block; }

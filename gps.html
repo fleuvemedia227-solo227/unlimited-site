@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://unlimitedniger.com/gps.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=b9532b7e">
+<link rel="stylesheet" href="style.css?v=fe494202">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -105,7 +105,7 @@
   const bg = document.getElementById('burger'), mn = document.getElementById('mnav');
   const setMenu = (o) => { mn.hidden = !o; bg.setAttribute('aria-expanded', String(o)); bg.setAttribute('aria-label', o ? 'Fermer le menu' : 'Ouvrir le menu'); top.classList.toggle('menu-open', o); document.documentElement.classList.toggle('no-scroll', o); };
   bg.onclick = () => setMenu(mn.hidden);
-  // Fenêtre « Parler à un expert » : prépare un e-mail avec la demande
+  // Fenêtre « Demander un devis » : prépare un e-mail avec la demande
   const dlg = document.getElementById('expert');
   if (dlg && dlg.showModal) {
     document.querySelectorAll('[data-expert]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); setMenu(false); const sv = document.querySelector('[data-svc]'); const k = sv && sv.dataset.svc; if (k) dlg.querySelector('#ex-svc').value = k; dlg.showModal(); }));
