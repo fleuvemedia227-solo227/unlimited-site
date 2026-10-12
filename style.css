@@ -1856,3 +1856,11 @@ html, body { overflow-x: clip; }
 @media (min-width: 861px) { .hx3 .hx-map.globe { right: auto; left: calc(50% - 40px); width: 640px; transform: translate(-50%, -50%); opacity: .7; } }
 .pj-txt h2 .pj-q { display: block; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; letter-spacing: -0.01em; white-space: nowrap; color: #fff; margin-bottom: 8px; }
 .pj-txt h2 > span { display: block; }
+
+/* ===== Carte et téléphone : le logo seul (plus de flou) — le badge « Bientôt disponible » passe en bas, sans cacher le logo ===== */
+.uc-frame.f-card::after, .car-solo .stage::after, .sc-app::after { top: auto; bottom: 14px; transform: translateX(-50%); }
+.car-solo .stage::after { bottom: 8%; }
+@media (min-width: 861px) { .car-solo .stage .card { top: 300px; } }
+@media (max-width: 860px) { .sc-app::after { display: none; } }
+
+@media (max-width: 860px) { .sc-app .c4 { top: 78px; left: -2%; font-size: 12.5px; } }
